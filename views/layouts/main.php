@@ -85,6 +85,7 @@ IEAssetBundle::register($this);
                     </div>
                 </div>
                 <div class="right_col" role="main">
+                    <div class="clearfix"></div>
                     <?= $content ?>
                 </div>
             </div>
