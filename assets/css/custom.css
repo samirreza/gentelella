@@ -72,3 +72,6 @@ span#export-grid-btn {
 .empty-row {
     height: 40px;
 }
+.navbar-right a {
+    height: 55px;
+}

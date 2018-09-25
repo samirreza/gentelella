@@ -47,6 +47,14 @@ IEAssetBundle::register($this);
                             <div class="nav toggle">
                                 <a id="menu_toggle"><i class="fa fa-bars"></i></a>
                             </div>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li>
+                                    <?= Html::a(
+                                        '<i class="fa fa-power-off fa-fw"></i>  خروج',
+                                        ['/user/auth/logout']
+                                    ) ?>
+                                </li>
+                            </ul>
                         </nav>
                     </div>
                 </div>
