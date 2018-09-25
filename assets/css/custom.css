@@ -1,0 +1,74 @@
+.file-input input {
+    font-size: 0 !important;
+}
+.input-small + .select2-container,
+.input-small {
+    width: 30% !important;
+}
+.input-medium + .select2-container,
+.input-medium {
+    width: 50% !important;
+}
+.input-large + .select2-container,
+.input-large {
+    width: 70% !important;
+}
+.input-xlarge + .select2-container,
+.input-xlarge {
+    width: 90% !important;
+}
+.form-control-feedback {
+    right: 0;
+    left: auto;
+}
+.has-feedback .form-control {
+    padding-right: 42.5px;
+    padding-left: 12px;
+    direction: ltr;
+}
+.single-file-upload {
+    position: relative;
+}
+.flash-message-container {
+    padding: 10px 20px;
+    position: fixed;
+    right: 35%;
+    text-align: center;
+    top: 50px;
+    width: 30%;
+    z-index: 2000000;
+}
+.wrapper {
+    min-height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+span#export-grid-btn {
+    font-size: 25px;
+}
+.user-menu .dropdown-menu {
+    width: 100% !important;
+}
+.content-header {
+    width: 100%;
+    height: 100%;
+    padding: 15px 15px 0px 15px;
+}
+.content-header h1 {
+    font-size: 24px !important;
+}
+.breadcrumb {
+    position: relative;
+    top: 0;
+    left: 0;
+    right: auto;
+    float: none;
+    background: #F7F7F7;
+    padding-right: 10px;
+}
+.nav_menu {
+    height: 55px;
+}
+.empty-row {
+    height: 40px;
+}
