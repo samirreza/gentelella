@@ -1,5 +1,6 @@
 <?php
 
+use yii\helpers\Url;
 use yii\helpers\Html;
 use theme\widgets\Menu;
 use yii\widgets\Breadcrumbs;
@@ -32,7 +33,13 @@ IEAssetBundle::register($this);
             <div class="main_container">
                 <div class="col-md-3 left_col hidden-print">
                     <div class="left_col scroll-view">
-                        <div class="navbar nav_title"></div>
+                        <div class="navbar nav_title">
+                            <?= Html::a(
+                                Yii::$app->name,
+                                Url::home(),
+                                ['class' => 'site_title']
+                            ) ?>
+                        </div>
                         <div class="clearfix"></div>
                         <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
                             <div class="menu_section">
