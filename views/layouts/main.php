@@ -35,7 +35,7 @@ IEAssetBundle::register($this);
                     <div class="left_col scroll-view">
                         <div class="navbar nav_title">
                             <?= Html::a(
-                                Yii::$app->name,
+                                Html::tag('span', Yii::$app->name),
                                 Url::home(),
                                 ['class' => 'site_title']
                             ) ?>
