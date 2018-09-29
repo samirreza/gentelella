@@ -32,11 +32,14 @@ class Menu extends \yii\widgets\Menu
 
     protected function renderItem($item)
     {
+        $iconTemplate = $this->setIconTemplate($item);
+        if (empty($item['url'])) {
+            $iconTemplate .= '<span class="fa fa-chevron-down"></span>';
+        }
         if (empty($item['url'])) {
             $item['url'] = 'javascript:void(0)';
         }
         $renderedItem = parent::renderItem($item);
-        $iconTemplate = $this->setIconTemplate($item);
         if (isset($item['badge'])) {
             $badgeOptions = ArrayHelper::getValue($item, 'badgeOptions', []);
             Html::addCssClass($badgeOptions, 'label pull-left');
