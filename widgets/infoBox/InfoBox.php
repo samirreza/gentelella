@@ -1,6 +1,6 @@
 <?php
 
-namespace theme\widgets;
+namespace theme\widgets\infoBox;
 
 use yii\base\Widget;
 use yii\base\InvalidConfigException;
@@ -30,21 +30,14 @@ class InfoBox extends Widget
             return;
         }
 
-        echo '<div class="tile-stats">';
-
-        echo '<div class="icon">';
-        echo '<i class="fa fa-' . $this->icon . '"></i> ';
-        echo '</div>';
-
-        echo '<div class="count">';
-        echo $this->count;
-        echo '</div>';
-
-        echo '<h4>';
-        echo $this->title;
-        echo '</h4>';
-
-        echo '</div>';
+        return $this->render(
+            'box',
+            [
+                'title' => $this->title,
+                'count' => $this->count,
+                'icon' => $this->icon
+            ]
+        );
     }
 
     private function checkIfVisible()

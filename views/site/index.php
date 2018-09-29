@@ -1,7 +1,7 @@
 <?php
 
-use theme\widgets\InfoBox;
-use modules\nad\supplier\common\models\Supplier;
+use theme\widgets\infoBox\InfoBox;
+use modules\nad\supplier\models\Supplier;
 use modules\nad\equipment\modules\type\models\Type as EquipmentType;
 use modules\nad\material\modules\type\models\Type as MaterialType;
 
