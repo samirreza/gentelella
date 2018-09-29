@@ -75,10 +75,18 @@ span#export-grid-btn {
 .navbar-right a {
     height: 55px;
 }
-
 .tile-stats h4 {
     margin: 0 10px 0 0;
     z-index: 5;
     padding: 0;
     position: relative;
+}
+body {
+    font-size: 16px !important;
+}
+.btn {
+    font-size: 16px !important;
+}
+label {
+    font-weight: 500 !important;
 }
