@@ -38,17 +38,6 @@
     width: 30%;
     z-index: 2000000;
 }
-.wrapper {
-    min-height: 100%;
-    position: relative;
-    overflow: hidden;
-}
-span#export-grid-btn {
-    font-size: 25px;
-}
-.user-menu .dropdown-menu {
-    width: 100% !important;
-}
 .content-header {
     width: 100%;
     height: 100%;
@@ -66,26 +55,11 @@ span#export-grid-btn {
     background: #F7F7F7;
     padding-right: 10px;
 }
-.nav_menu {
-    height: 55px;
-}
 .empty-row {
     height: 40px;
 }
 .navbar-right a {
     height: 55px;
-}
-.tile-stats h4 {
-    margin: 0 10px 0 0;
-    z-index: 5;
-    padding: 0;
-    position: relative;
-}
-body {
-    font-size: 14px !important;
-}
-.btn {
-    font-size: 14px !important;
 }
 label {
     font-weight: 500 !important;
