@@ -90,3 +90,9 @@ body {
 label {
     font-weight: 500 !important;
 }
+
+ul.timeline li {
+    position: relative !important;
+    clear: both !important;
+    border-bottom: 0px solid #eaeaea !important;
+}
