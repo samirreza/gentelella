@@ -10,20 +10,24 @@
     <div class="x_content">
         <div class="dashboard-widget-content">
             <ul class="list-unstyled timeline widget">
-                <li>
-                    <div class="block">
-                        <div class="block_content">
-                            <h2 class="title">
-                                <a>  نسخه :  <?=$lastUpdate->version?></a>
-                            </h2>
-                            <div class="byline">
-                                <span>  تاریخ بروزرسانی :  <?=Yii::$app->formatter->asDate($lastUpdate->date);?>  </span>
+                <?php foreach ($lastUpdate as $update) : ?>
+                    <li>
+                        <div class="block">
+                            <div class="block_content">
+                                <h2 class="title">
+                                    <a> نسخه : <?= $update->version ?></a>
+                                </h2>
+                                <div class="byline">
+                                    <span>  تاریخ بروزرسانی : <?= Yii::$app->formatter->asDate($update->date); ?>  </span>
+                                </div>
+                                <p class="excerpt"><?= $update->description ?></p>
                             </div>
-                            <p class="excerpt"><?=$lastUpdate->description?></p>
-                            <a href="<?=$linkUrl?>" target="_blank" style="float: left;">نمایش بیشتر</a>
                         </div>
-                    </div>
-                </li>
+                    </li>
+                <?php endforeach; ?>
+                <?php if ($showLink) : ?>
+                    <a href="<?= $linkUrl ?>" target="_blank" style="float: left;">نمایش بیشتر</a>
+                <?php endif ?>
             </ul>
         </div>
     </div>

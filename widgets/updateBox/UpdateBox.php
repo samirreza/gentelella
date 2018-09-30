@@ -9,6 +9,7 @@ class UpdateBox extends Widget
 {
     public $lastUpdate;
     public $linkUrl;
+    public $showLink = true;
     public $visible = true;
     public $visibleFor;
 
@@ -29,11 +30,16 @@ class UpdateBox extends Widget
             return;
         }
 
+        if(!$this->showLink) {
+            $this->linkUrl = '#';
+        }
+
         return $this->render(
             'log',
             [
                 'lastUpdate' => $this->lastUpdate,
                 'linkUrl' => $this->linkUrl,
+                'showLink' => $this->showLink,
             ]
         );
     }
