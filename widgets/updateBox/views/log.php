@@ -17,7 +17,7 @@
                                 <a>  نسخه :  <?=$lastUpdate->version?></a>
                             </h2>
                             <div class="byline">
-                                <span>  تاریخ بروزرسانی :  <?=Yii::$app->formatter->asDate($lastUpdate->updatedAt);?>  </span>
+                                <span>  تاریخ بروزرسانی :  <?=Yii::$app->formatter->asDate($lastUpdate->date);?>  </span>
                             </div>
                             <p class="excerpt"><?=$lastUpdate->description?></p>
                             <a href="<?=$linkUrl?>" target="_blank" style="float: left;">نمایش بیشتر</a>
