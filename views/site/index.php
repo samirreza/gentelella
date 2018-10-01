@@ -15,11 +15,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="row">
     <div class="col-sm-12" style="text-align: center">
-        <h3>به پنل مدیریت وب سایت <?php echo Yii::$app->name ?> خوش آمدید</h3>
+        <h3>به پنل مدیریت سامانه ی <?php echo Yii::$app->name ?> خوش آمدید</h3>
     </div>
 </div>
 <hr/>
-<div class="row">
+<!-- <div class="row">
     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
         <?=
         InfoBox::widget([
@@ -50,7 +50,7 @@ $this->params['breadcrumbs'][] = $this->title;
         ])
         ?>
     </div>
-</div>
+</div> -->
 <hr/>
 <div class="row">
     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
