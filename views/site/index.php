@@ -18,7 +18,6 @@ $this->params['breadcrumbs'][] = $this->title;
         <h3>به پنل مدیریت سامانه ی <?php echo Yii::$app->name ?> خوش آمدید</h3>
     </div>
 </div>
-<hr/>
 <!-- <div class="row">
     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
         <?=
@@ -51,7 +50,7 @@ $this->params['breadcrumbs'][] = $this->title;
         ?>
     </div>
 </div> -->
-<hr/>
+<br>
 <div class="row">
     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
         <?=
