@@ -2,9 +2,9 @@
 
 use yii\helpers\Url;
 use theme\widgets\infoBox\InfoBox;
-use theme\widgets\updateBox\UpdateBox;
-use modules\nad\supplier\models\Supplier;
 use modules\changelog\models\ChangeLog;
+use modules\nad\supplier\models\Supplier;
+use modules\changelog\widgets\updateBox\UpdateBox;
 use modules\nad\equipment\modules\type\models\Type as EquipmentType;
 use modules\nad\material\modules\type\models\Type as MaterialType;
 
