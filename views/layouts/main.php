@@ -61,7 +61,7 @@ IEAssetBundle::register($this);
                                         ['/user/auth/logout']
                                     ) ?>
                                 </li>
-                                <li>
+                                <li id="user-email">
                                     <?php
                                     if(!Yii::$app->user->isGuest)
                                     {

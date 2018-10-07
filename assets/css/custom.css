@@ -1,34 +1,42 @@
 .file-input input {
     font-size: 0 !important;
 }
+
 .input-small + .select2-container,
 .input-small {
     width: 30% !important;
 }
+
 .input-medium + .select2-container,
 .input-medium {
     width: 50% !important;
 }
+
 .input-large + .select2-container,
 .input-large {
     width: 70% !important;
 }
+
 .input-xlarge + .select2-container,
 .input-xlarge {
     width: 90% !important;
 }
+
 .form-control-feedback {
     right: 0;
     left: auto;
 }
+
 .has-feedback .form-control {
     padding-right: 42.5px;
     padding-left: 12px;
     direction: ltr;
 }
+
 .single-file-upload {
     position: relative;
 }
+
 .flash-message-container {
     padding: 10px 20px;
     position: fixed;
@@ -38,14 +46,17 @@
     width: 30%;
     z-index: 2000000;
 }
+
 .content-header {
     width: 100%;
     height: 100%;
     padding: 15px 15px 0px 15px;
 }
+
 .content-header h1 {
     font-size: 24px !important;
 }
+
 .breadcrumb {
     position: relative;
     top: 0;
@@ -55,17 +66,28 @@
     background: #F7F7F7;
     padding-right: 10px;
 }
+
 .empty-row {
     height: 40px;
 }
+
 .navbar-right a {
     height: 55px;
 }
+
 label {
     font-weight: 500 !important;
 }
+
 ul.timeline li {
     position: relative !important;
     clear: both !important;
     border-bottom: 0px solid #eaeaea !important;
+}
+
+
+@media (max-width: 358px) {
+    #user-email {
+        display: none;
+    }
 }
