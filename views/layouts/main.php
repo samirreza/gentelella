@@ -2,7 +2,7 @@
 
 use yii\helpers\Url;
 use yii\helpers\Html;
-use theme\widgets\Menu;
+use theme\widgets\SamanadMenu;
 use yii\widgets\Breadcrumbs;
 use theme\widgets\FlashMessage;
 use theme\assetbundles\IEAssetBundle;
@@ -43,7 +43,7 @@ IEAssetBundle::register($this);
                         <div class="clearfix"></div>
                         <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
                             <div class="menu_section">
-                                <?= Menu::widget() ?>
+                                <?= SamanadMenu::widget() ?>
                             </div>
                         </div>
                     </div>

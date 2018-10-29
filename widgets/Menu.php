@@ -64,7 +64,7 @@ class Menu extends \yii\widgets\Menu
         return $iconTemplate;
     }
 
-    private function getMenuItems()
+    protected function getMenuItems()
     {
         $modules = array_keys(Yii::$app->getModules());
         foreach ($modules as $moduleId) {
