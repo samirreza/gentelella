@@ -3,8 +3,6 @@
 namespace theme\widgets;
 
 use Yii;
-use yii\helpers\Html;
-use yii\helpers\ArrayHelper;
 
 class SamanadMenu extends Menu
 {
@@ -57,6 +55,27 @@ class SamanadMenu extends Menu
                         'icon' => 'tag',
                         'url' => ['/it/equipment/type/manage/index'],
                         'visible' => $user->can('it.equipment-type'),
+                    ]
+                ]
+            ],
+            [
+                'label' => 'پژوهش',
+                'icon' => 'flask',
+                'items' => [
+                    [
+                        'label' => 'مدیریت کارشناسان',
+                        'icon' => 'graduation-cap',
+                        'url' => ['/research/expert/manage/index'],
+                        'visible' => $user->can('research.manageExperts')
+                    ],
+                    [
+                        'label' => 'مدیریت منشا',
+                        'icon' => 'graduation-cap',
+                        'url' => ['/research/source/manage/index'],
+                        'visible' => $user->canAccessAny([
+                            'research.createSource',
+                            'research.manageSource'
+                        ])
                     ]
                 ]
             ],
