@@ -1,6 +1,7 @@
 $().ready(function() {
     $(document).on('click', 'a.ajaxcreate, .ajaxupdate, .ajaxview', function(event) {
         event.preventDefault();
+        window.scrollTo(0, 0);
         showLoading();
         slidingFormWrapper = getSlidingFormWrapper($(this));
         slidingFormWrapper.slideUp(300);
