@@ -54,6 +54,9 @@ class Button extends Widget
 
     private function checkIfVisible()
     {
+        if (!$this->visible) {
+            return;
+        }
         if (isset($this->visibleFor)) {
             $this->visible = false;
             foreach ($this->visibleFor as $permission) {
