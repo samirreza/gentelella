@@ -2,27 +2,29 @@ $().ready(function() {
     $(document).on('click', 'a.ajaxcreate, .ajaxupdate, .ajaxview', function(event) {
         event.preventDefault();
         showLoading();
-        $('div.sliding-form-wrapper').slideUp(300);
+        slidingFormWrapper = getSlidingFormWrapper($(this));
+        slidingFormWrapper.slideUp(300);
         $.ajax({
             url: $(this).attr('href'),
             type: 'post',
             dataType: 'json',
             success: function(data) {
                 hideLoading();
-                $('div.sliding-form-wrapper').html(data.content).slideDown(500);
+                slidingFormWrapper.html(data.content).slideDown(500);
             }
         });
     });
 
     $(document).on('click', 'a.close-sliding-form-button', function(event) {
         event.preventDefault();
-        $('div.sliding-form-wrapper').slideUp(300);
+        getSlidingFormWrapper($(this)).slideUp(300);
     });
 
     $(document).on('submit', 'form.sliding-form', function(event) {
         event.preventDefault();
         showLoading();
-        $('.sliding-form-wrapper button.submit').attr('disabled', 'disabled');
+        $(this).find('button.submit').attr('disabled', 'disabled');
+        wrapper = getSlidingFormWrapper($(this));
         $.ajax({
             url: $(this).attr('action'),
             type: 'post',
@@ -35,13 +37,13 @@ $().ready(function() {
         }).done(function(data) {
             hideLoading();
             if (data.status == 'success' || data.status == 'danger') {
-                $('div.sliding-form-wrapper').slideUp(300);
-                $('div.sliding-form-wrapper').empty();
+                $(this).slideUp(300);
+                $(this).empty();
                 showAlert(data.message, data.status);
                 refreshGrid();
             } else {
-                $('div.sliding-form-wrapper').html(data.content);
-                $('.sliding-form-wrapper button.submit').removeAttr('disabled');
+                wrapper.html(data.content);
+                $(this).find('button.submit').removeAttr('disabled');
             }
         });
     });
@@ -50,7 +52,7 @@ $().ready(function() {
         event.preventDefault();
         showLoading();
         if (confirm($(this).attr('data-confirmmsg'))) {
-            $('div.sliding-form-wrapper').slideUp(300);
+            getSlidingFormWrapper($(this)).slideUp(300);
             $.ajax({
                 url: $(this).attr('href'),
                 type: 'post',
@@ -68,7 +70,7 @@ $().ready(function() {
     $(document).on('click', 'a.ajaxrequest', function(event) {
         event.preventDefault();
         showLoading();
-        $('div.sliding-form-wrapper').slideUp(500);
+        getSlidingFormWrapper($(this)).slideUp(500);
         $.ajax({
             url: $(this).attr('href'),
             type: 'post',
@@ -79,6 +81,15 @@ $().ready(function() {
             refreshGrid();
         });
     });
+
+    function getSlidingFormWrapper(element)
+    {
+        slidingFormId = element.attr('data-sliding-form-id');
+        if (slidingFormId) {
+            return $('#' + slidingFormId);
+        }
+        return $('div.sliding-form-wrapper');
+    }
 
     function showLoading() {
         loadingDiv = $('<div class="loading-gif"><i class="fa fa-spinner fa-pulse fa-3x"></i></div>');
