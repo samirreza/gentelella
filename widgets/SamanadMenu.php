@@ -75,7 +75,7 @@ class SamanadMenu extends Menu
                         'visible' => $user->canAccessAny([
                             'expert',
                             'research.createSource',
-                            'research.manageSource'
+                            'research.manageSources'
                         ])
                     ],
                     [
@@ -84,7 +84,7 @@ class SamanadMenu extends Menu
                         'url' => ['/research/proposal/manage/index'],
                         'visible' => $user->canAccessAny([
                             'expert',
-                            'research.manageProposal'
+                            'research.manageProposals'
                         ])
                     ],
                     [
