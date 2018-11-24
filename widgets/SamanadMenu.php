@@ -69,12 +69,31 @@ class SamanadMenu extends Menu
                         'visible' => $user->can('research.manageExperts')
                     ],
                     [
-                        'label' => 'مدیریت منشا',
-                        'icon' => 'graduation-cap',
+                        'label' => 'مدیریت منشاها',
+                        'icon' => 'file-word-o',
                         'url' => ['/research/source/manage/index'],
                         'visible' => $user->canAccessAny([
+                            'expert',
                             'research.createSource',
                             'research.manageSource'
+                        ])
+                    ],
+                    [
+                        'label' => 'مدیریت پروپوزال ها',
+                        'icon' => 'file-word-o',
+                        'url' => ['/research/proposal/manage/index'],
+                        'visible' => $user->canAccessAny([
+                            'expert',
+                            'research.manageProposal'
+                        ])
+                    ],
+                    [
+                        'label' => 'مدیریت پروژه ها',
+                        'icon' => 'file-word-o',
+                        'url' => ['/research/project/manage/index'],
+                        'visible' => $user->canAccessAny([
+                            'expert',
+                            'research.manageProject'
                         ])
                     ]
                 ]
