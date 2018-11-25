@@ -88,7 +88,7 @@ class SamanadMenu extends Menu
                         ])
                     ],
                     [
-                        'label' => 'مدیریت پروژه ها',
+                        'label' => 'مدیریت گزارش ها',
                         'icon' => 'file-word-o',
                         'url' => ['/research/project/manage/index'],
                         'visible' => $user->canAccessAny([
