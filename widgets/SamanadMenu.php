@@ -11,16 +11,54 @@ class SamanadMenu extends Menu
         $user = Yii::$app->user;
         return [
             [
-                'label' => 'فنی مهندسی',
-                'icon' => 'wrench',
+                'label' => 'پژوهش',
+                'icon' => 'flask',
                 'items' => [
                     [
-                        'label' => 'شناسه مواد',
+                        'label' => 'شناسه مواد فرایندی و آزمایشگاهی',
                         'icon' => 'tag',
                         'url' => ['/material/type/manage/index'],
                         'visible' => $user->can('material.type')
                     ],
+                    [
+                        'label' => 'کارشناسان',
+                        'icon' => 'graduation-cap',
+                        'url' => ['/research/expert/manage/index'],
+                        'visible' => $user->can('research.manageExperts')
+                    ],
+                    [
+                        'label' => 'منشا',
+                        'icon' => 'file-word-o',
+                        'url' => ['/research/source/manage/index'],
+                        'visible' => $user->canAccessAny([
+                            'expert',
+                            'research.createSource',
+                            'research.manageSources'
+                        ])
+                    ],
+                    [
+                        'label' => 'پروپوزال',
+                        'icon' => 'file-word-o',
+                        'url' => ['/research/proposal/manage/index'],
+                        'visible' => $user->canAccessAny([
+                            'expert',
+                            'research.manageProposals'
+                        ])
+                    ],
+                    [
+                        'label' => 'گزارش',
+                        'icon' => 'file-word-o',
+                        'url' => ['/research/project/manage/index'],
+                        'visible' => $user->canAccessAny([
+                            'expert',
+                            'research.manageProject'
+                        ])
+                    ]
                 ]
+            ],
+            [
+                'label' => 'فنی مهندسی',
+                'icon' => 'wrench'
             ],
             [
                 'label' => 'تجهیزات',
@@ -31,6 +69,12 @@ class SamanadMenu extends Menu
                         'icon' => 'tag',
                         'url' => ['/equipment/type/manage/index'],
                         'visible' => $user->can('equipment.type')
+                    ],
+                    [
+                        'label' => 'شناسه مواد سرویس ونگهداری',
+                        'icon' => 'tag',
+                        'url' => ['/equipment/type/manage/material'],
+                        'visible' => $user->can('material.type')
                     ],
                 ]
             ],
@@ -47,6 +91,10 @@ class SamanadMenu extends Menu
                 ]
             ],
             [
+                'label' => 'پشتیبانی',
+                'icon' => 'wrench'
+            ],
+            [
                 'label' => 'آی تی',
                 'icon' => 'laptop',
                 'items' => [
@@ -59,47 +107,19 @@ class SamanadMenu extends Menu
                 ]
             ],
             [
-                'label' => 'پژوهش',
-                'icon' => 'flask',
-                'items' => [
-                    [
-                        'label' => 'مدیریت کارشناسان',
-                        'icon' => 'graduation-cap',
-                        'url' => ['/research/expert/manage/index'],
-                        'visible' => $user->can('research.manageExperts')
-                    ],
-                    [
-                        'label' => 'مدیریت منشاها',
-                        'icon' => 'file-word-o',
-                        'url' => ['/research/source/manage/index'],
-                        'visible' => $user->canAccessAny([
-                            'expert',
-                            'research.createSource',
-                            'research.manageSources'
-                        ])
-                    ],
-                    [
-                        'label' => 'مدیریت پروپوزال ها',
-                        'icon' => 'file-word-o',
-                        'url' => ['/research/proposal/manage/index'],
-                        'visible' => $user->canAccessAny([
-                            'expert',
-                            'research.manageProposals'
-                        ])
-                    ],
-                    [
-                        'label' => 'مدیریت گزارش ها',
-                        'icon' => 'file-word-o',
-                        'url' => ['/research/project/manage/index'],
-                        'visible' => $user->canAccessAny([
-                            'expert',
-                            'research.manageProject'
-                        ])
-                    ]
-                ]
+                'label' => 'مالی',
+                'icon' => 'wrench'
             ],
             [
-                'label' => 'مدیریت کاربران',
+                'label' => 'اداری',
+                'icon' => 'wrench'
+            ],
+            [
+                'label' => 'بندر',
+                'icon' => 'wrench'
+            ],
+            [
+                'label' => 'کاربران',
                 'url' => ['/user/manage/index'],
                 'icon' => 'user',
                 'visible' => $user->can('superuser')
