@@ -57,19 +57,21 @@ class SamanadMenu extends Menu
                 ]
             ],
             [
-                'label' => 'فنی مهندسی',
-                'icon' => 'wrench'
-            ],
-            [
-                'label' => 'تجهیزات',
-                'icon' => 'cogs',
+                'label' => 'فنی',
+                'icon' => 'wrench',
                 'items' => [
                     [
                         'label' => 'شناسه تجهیزات',
                         'icon' => 'tag',
                         'url' => ['/equipment/type/manage/index'],
                         'visible' => $user->can('equipment.type')
-                    ],
+                    ]
+                ]
+            ],
+            [
+                'label' => 'تجهیزات',
+                'icon' => 'cogs',
+                'items' => [
                     [
                         'label' => 'شناسه مواد سرویس ونگهداری',
                         'icon' => 'tag',
