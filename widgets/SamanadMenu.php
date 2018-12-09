@@ -24,7 +24,7 @@ class SamanadMenu extends Menu
                         'label' => 'کارشناسان',
                         'icon' => 'graduation-cap',
                         'url' => ['/research/expert/manage/index'],
-                        'visible' => $user->can('research.manageExperts')
+                        'visible' => $user->can('research.manage')
                     ],
                     [
                         'label' => 'منشا',
@@ -32,8 +32,7 @@ class SamanadMenu extends Menu
                         'url' => ['/research/source/manage/index'],
                         'visible' => $user->canAccessAny([
                             'expert',
-                            'research.createSource',
-                            'research.manageSources'
+                            'research.manage'
                         ])
                     ],
                     [
@@ -42,7 +41,7 @@ class SamanadMenu extends Menu
                         'url' => ['/research/proposal/manage/index'],
                         'visible' => $user->canAccessAny([
                             'expert',
-                            'research.manageProposals'
+                            'research.manage'
                         ])
                     ],
                     [
@@ -51,8 +50,20 @@ class SamanadMenu extends Menu
                         'url' => ['/research/project/manage/index'],
                         'visible' => $user->canAccessAny([
                             'expert',
-                            'research.manageProject'
+                            'research.manage'
                         ])
+                    ],
+                    [
+                        'label' => 'گزارش های مدیریتی',
+                        'icon' => 'book',
+                        'items' => [
+                            [
+                                'label' => 'پروپوزال',
+                                'icon' => 'file-word-o',
+                                'url' => ['/research/proposal/manage/manager-index'],
+                                'visible' => $user->can('superuser')
+                            ]
+                        ]
                     ]
                 ]
             ],
