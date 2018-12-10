@@ -119,3 +119,7 @@ ul.timeline li {
     top: 20px !important;
     z-index: 1;
 }
+
+footer {
+    position: fixed;
+}

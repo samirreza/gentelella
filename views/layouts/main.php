@@ -96,6 +96,9 @@ IEAssetBundle::register($this);
                     <div class="clearfix"></div>
                     <?= $content ?>
                 </div>
+                <footer>
+                    <div class="clearfix"></div>
+                </footer>
             </div>
         </div>
     <?php $this->endBody() ?>
