@@ -60,7 +60,7 @@ class SamanadMenu extends Menu
                             [
                                 'label' => 'پروپوزال',
                                 'icon' => 'file-word-o',
-                                'url' => ['/research/proposal/manage/manager-index'],
+                                'url' => ['/research/proposal/manage/report'],
                                 'visible' => $user->can('superuser')
                             ]
                         ]
