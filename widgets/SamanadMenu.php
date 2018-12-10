@@ -21,6 +21,12 @@ class SamanadMenu extends Menu
                         'visible' => $user->can('material.type')
                     ],
                     [
+                        'label' => 'شناسه تجهیزات آزمایشگاهی',
+                        'icon' => 'tag',
+                        'url' => ['/research/lab/manage/index'],
+                        'visible' => $user->can('material.type')
+                    ],
+                    [
                         'label' => 'کارشناسان',
                         'icon' => 'graduation-cap',
                         'url' => ['/research/expert/manage/index'],
