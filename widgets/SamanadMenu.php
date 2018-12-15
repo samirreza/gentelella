@@ -33,6 +33,15 @@ class SamanadMenu extends Menu
                         'visible' => $user->can('research.manage')
                     ],
                     [
+                        'label' => 'منابع',
+                        'icon' => 'file-word-o',
+                        'url' => ['/research/resource/manage/index'],
+                        'visible' => $user->canAccessAny([
+                            'expert',
+                            'research.manage'
+                        ])
+                    ],
+                    [
                         'label' => 'منشا',
                         'icon' => 'file-word-o',
                         'url' => ['/research/source/manage/index'],
