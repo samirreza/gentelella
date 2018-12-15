@@ -38,7 +38,7 @@ $().ready(function() {
             cache: false,
             contentType: false,
             processData: false,
-            async: false
+            async: true
         }).done(function(data) {
             hideLoading();
             if (data.status == "success" || data.status == "danger") {
