@@ -15,66 +15,91 @@ class SamanadMenu extends Menu
                 'icon' => 'flask',
                 'items' => [
                     [
-                        'label' => 'شناسه مواد فرایندی و آزمایشگاهی',
-                        'icon' => 'tag',
-                        'url' => ['/material/type/manage/index'],
-                        'visible' => $user->can('material.type')
+                        'label' => 'آزمایشگاه و فرایند',
+                        'items' => [
+                            [
+                                'label' => 'تجهیزات آزمایشگاه',
+                                'url' => ['/research/lab/manage/index'],
+                                'visible' => $user->can('material.type')
+                            ],
+                            [
+                                'label' => 'مواد و کالای آزمایشگاه',
+                                'url' => '#',
+                            ],
+                            [
+                                'label' => 'مواد و کالای فرایندی',
+                                'url' => ['/research/material/manage/index'],
+                                'visible' => $user->can('research.material')
+                            ],
+                            [
+                                'label' => 'آزمایشات',
+                                'url' => '#'
+                            ],
+                            [
+                                'label' => 'دستور العمل ها',
+                                'url' => '#'
+                            ],
+                            [
+                                'label' => 'گزارش تجربی',
+                                'url' => '#'
+                            ],
+                            [
+                                'label' => 'بهره برداری',
+                                'url' => '#'
+                            ],
+                            [
+                                'label' => 'منابع',
+                                'url' => '#'
+                            ]
+                        ]
                     ],
                     [
-                        'label' => 'شناسه تجهیزات آزمایشگاهی',
-                        'icon' => 'tag',
-                        'url' => ['/research/lab/manage/index'],
-                        'visible' => $user->can('material.type')
-                    ],
-                    [
-                        'label' => 'کارشناسان',
-                        'icon' => 'graduation-cap',
-                        'url' => ['/research/expert/manage/index'],
-                        'visible' => $user->can('research.manage')
-                    ],
-                    [
-                        'label' => 'منابع',
-                        'icon' => 'file-word-o',
-                        'url' => ['/research/resource/manage/index'],
-                        'visible' => $user->canAccessAny([
-                            'expert',
-                            'research.manage'
-                        ])
-                    ],
-                    [
-                        'label' => 'منشا',
-                        'icon' => 'file-word-o',
-                        'url' => ['/research/source/manage/index'],
-                        'visible' => $user->canAccessAny([
-                            'expert',
-                            'research.manage'
-                        ])
-                    ],
-                    [
-                        'label' => 'پروپوزال',
-                        'icon' => 'file-word-o',
-                        'url' => ['/research/proposal/manage/index'],
-                        'visible' => $user->canAccessAny([
-                            'expert',
-                            'research.manage'
-                        ])
-                    ],
-                    [
-                        'label' => 'گزارش',
-                        'icon' => 'file-word-o',
-                        'url' => ['/research/project/manage/index'],
-                        'visible' => $user->canAccessAny([
-                            'expert',
-                            'research.manage'
-                        ])
+                        'label' => 'مطالعات و پژوهش',
+                        'items' => [
+                            [
+                                'label' => 'کارشناسان',
+                                'url' => ['/research/expert/manage/index'],
+                                'visible' => $user->can('research.manage')
+                            ],
+                            [
+                                'label' => 'گزارشات',
+                                'url' => ['/research/project/manage/index'],
+                                'visible' => $user->canAccessAny([
+                                    'expert',
+                                    'research.manage'
+                                ])
+                            ],
+                            [
+                                'label' => 'منشا',
+                                'url' => ['/research/source/manage/index'],
+                                'visible' => $user->canAccessAny([
+                                    'expert',
+                                    'research.manage'
+                                ])
+                            ],
+                            [
+                                'label' => 'پروپوزال',
+                                'url' => ['/research/proposal/manage/index'],
+                                'visible' => $user->canAccessAny([
+                                    'expert',
+                                    'research.manage'
+                                ])
+                            ],
+                            [
+                                'label' => 'منابع',
+                                'url' => ['/research/resource/manage/index'],
+                                'visible' => $user->canAccessAny([
+                                    'expert',
+                                    'research.manage'
+                                ])
+                            ]
+                        ]
                     ],
                     [
                         'label' => 'گزارش های مدیریتی',
-                        'icon' => 'book',
                         'items' => [
                             [
                                 'label' => 'پروپوزال',
-                                'icon' => 'file-word-o',
                                 'url' => ['/research/proposal/manage/report'],
                                 'visible' => $user->can('superuser')
                             ]
@@ -131,6 +156,16 @@ class SamanadMenu extends Menu
                         'icon' => 'tag',
                         'url' => ['/it/equipment/type/manage/index'],
                         'visible' => $user->can('it.equipment-type'),
+                    ],
+                    [
+                        'label' => 'گزارش های مدیریتی',
+                        'items' => [
+                            [
+                                'label' => 'شناسه تجهیزات',
+                                'url' => ['/it/equipment/type/manage/report'],
+                                'visible' => $user->can('superuser')
+                            ]
+                        ]
                     ]
                 ]
             ],
