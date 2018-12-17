@@ -15,60 +15,8 @@ class SamanadMenu extends Menu
                 'icon' => 'flask',
                 'items' => [
                     [
-                        'label' => 'آزمایشگاه و فرایند',
+                        'label' => 'بررسی',
                         'items' => [
-                            [
-                                'label' => 'تجهیزات آزمایشگاه',
-                                'url' => ['/research/lab/manage/index'],
-                                'visible' => $user->can('material.type')
-                            ],
-                            [
-                                'label' => 'مواد و کالای آزمایشگاه',
-                                'url' => '#',
-                            ],
-                            [
-                                'label' => 'مواد و کالای فرایندی',
-                                'url' => ['/research/material/manage/index'],
-                                'visible' => $user->can('research.material')
-                            ],
-                            [
-                                'label' => 'آزمایشات',
-                                'url' => '#'
-                            ],
-                            [
-                                'label' => 'دستور العمل ها',
-                                'url' => '#'
-                            ],
-                            [
-                                'label' => 'گزارش تجربی',
-                                'url' => '#'
-                            ],
-                            [
-                                'label' => 'بهره برداری',
-                                'url' => '#'
-                            ],
-                            [
-                                'label' => 'منابع',
-                                'url' => '#'
-                            ]
-                        ]
-                    ],
-                    [
-                        'label' => 'مطالعات و پژوهش',
-                        'items' => [
-                            [
-                                'label' => 'کارشناسان',
-                                'url' => ['/research/expert/manage/index'],
-                                'visible' => $user->can('research.manage')
-                            ],
-                            [
-                                'label' => 'گزارشات',
-                                'url' => ['/research/project/manage/index'],
-                                'visible' => $user->canAccessAny([
-                                    'expert',
-                                    'research.manage'
-                                ])
-                            ],
                             [
                                 'label' => 'منشا',
                                 'url' => ['/research/source/manage/index'],
@@ -86,14 +34,83 @@ class SamanadMenu extends Menu
                                 ])
                             ],
                             [
-                                'label' => 'منابع',
-                                'url' => ['/research/resource/manage/index'],
+                                'label' => 'گزارش',
+                                'url' => ['/research/project/manage/index'],
                                 'visible' => $user->canAccessAny([
                                     'expert',
                                     'research.manage'
                                 ])
+                            ],
+                            [
+                                'label' => 'دستور العمل بهره برداری',
+                                'url' => '#'
                             ]
                         ]
+                    ],
+                    [
+                        'label' => 'کنترل',
+                        'items' => [
+                            [
+                                'label' => 'گزارشات تولیدی',
+                                'url' => '#',
+                            ],
+                            [
+                                'label' => 'گزارشات اندازه گیری',
+                                'url' => '#',
+                            ],
+                            [
+                                'label' => 'گزارشات تجربی',
+                                'url' => '#',
+                            ],
+                            [
+                                'label' => 'مواد و کالای فرایندی',
+                                'url' => ['/research/material/manage/index'],
+                                'visible' => $user->can('research.material')
+                            ],
+                            [
+                                'label' => 'تامین کنندگان',
+                                'url' => '#',
+                            ],
+                        ]
+                    ],
+                    [
+                        'label' => 'آزمایشگاه',
+                        'items' => [
+                            [
+                                'label' => 'دستور العمل ها',
+                                'url' => '#',
+                            ],
+                            [
+                                'label' => 'گزارشات ازمایش ها و اندازه گیری ها',
+                                'url' => '#',
+                            ],
+                            [
+                                'label' => 'تجهیزات، کالا، مواد',
+                                'url' => ['/research/lab/manage/index'],
+                                'visible' => $user->can('research.manage')
+                            ],
+                            [
+                                'label' => 'تامین کنندگان',
+                                'url' => '#',
+                            ],
+                            [
+                                'label' => 'نقاط نمونه گیری و اندازه گیری',
+                                'url' => '#',
+                            ],
+                        ]
+                    ],
+                    [
+                        'label' => 'منابع',
+                        'url' => ['/research/resource/manage/index'],
+                        'visible' => $user->canAccessAny([
+                            'expert',
+                            'research.manage'
+                        ])
+                    ],
+                    [
+                        'label' => 'کارشناسان',
+                        'url' => ['/research/expert/manage/index'],
+                        'visible' => $user->can('research.manage')
                     ],
                     [
                         'label' => 'گزارش های مدیریتی',
