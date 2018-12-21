@@ -6,7 +6,7 @@ use modules\changelog\models\ChangeLog;
 use modules\nad\supplier\models\Supplier;
 use modules\changelog\widgets\updateBox\UpdateBox;
 use modules\nad\equipment\modules\type\models\Type as EquipmentType;
-use modules\nad\material\modules\type\models\Type as MaterialType;
+use nad\research\modules\material\models\Type as MaterialType;
 
 $this->title = 'داشبورد';
 $this->params['breadcrumbs'][] = $this->title;

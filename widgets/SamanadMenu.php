@@ -178,7 +178,7 @@ class SamanadMenu extends Menu
                         'label' => 'گزارش های مدیریتی',
                         'items' => [
                             [
-                                'label' => 'شناسه تجهیزات',
+                                'label' => 'درخت شناسه های تجهیزات',
                                 'url' => ['/it/equipment/type/manage/report'],
                                 'visible' => $user->can('superuser')
                             ]
