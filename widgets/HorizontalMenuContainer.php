@@ -10,10 +10,15 @@ class HorizontalMenuContainer extends \yii\base\Widget
     public function run()
     {
         $module = Yii::$app->controller->module;
-        if (!isset($module->horizontalButtons)) {
+        $parentModule = Yii::$app->controller->module->module;
+        $buttons = array_merge(
+            $module->horizontalButtons ?? [],
+            $parentModule->horizontalButtons ?? []
+        );
+        if (empty($buttons)) {
             return;
         }
-        foreach ($module->horizontalButtons as $button) {
+        foreach ($buttons as $button) {
             $visibleFor = (empty($button['visibleFor'])) ? null : $button['visibleFor'];
             $visible = isset($button['visible']) ? $button['visible'] : true;
             Html::addCssClass($button['options'], 'horizontal-menu-buttons');
