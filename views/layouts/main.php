@@ -7,6 +7,7 @@ use yii\widgets\Breadcrumbs;
 use theme\widgets\FlashMessage;
 use theme\assetbundles\IEAssetBundle;
 use theme\assetbundles\ThemeAssetBundle;
+use theme\widgets\HorizontalMenuContainer;
 
 ThemeAssetBundle::register($this);
 IEAssetBundle::register($this);
@@ -54,22 +55,17 @@ IEAssetBundle::register($this);
                             <div class="nav toggle">
                                 <a id="menu_toggle"><i class="fa fa-bars"></i></a>
                             </div>
-                            <ul class="nav navbar-nav navbar-right">
-                                <li>
-                                    <?= Html::a(
-                                        '<i class="fa fa-power-off fa-fw"></i>  خروج',
-                                        ['/user/auth/logout']
-                                    ) ?>
-                                </li>
-                                <li id="user-email">
-                                    <?php
-                                    if(!Yii::$app->user->isGuest)
-                                    {
-                                        echo Html::a(\Yii::$app->user->identity->email);
-                                    }
-                                    ?>
-                                </li>
-                            </ul>
+                            <?= HorizontalMenuContainer::widget() ?>
+                            <?= Html::a(
+                                '<i class="fa fa-power-off fa-fw"></i>  خروج',
+                                ['/user/auth/logout'],
+                                ['class' => 'logout-button']
+                            ) ?>
+                            <?= Html::a(
+                                Yii::$app->user->identity->email,
+                                '',
+                                ['class' => 'user-email']
+                            ) ?>
                         </nav>
                     </div>
                 </div>
@@ -96,6 +92,12 @@ IEAssetBundle::register($this);
                     <div class="clearfix"></div>
                     <?= $content ?>
                 </div>
+                <footer class="hidden-print">
+                    <div class="pull-left">
+                    قالب پنل مدیریت <?= Yii::$app->name ?>
+                    </div>
+                    <div class="clearfix"></div>
+                </footer>
             </div>
         </div>
     <?php $this->endBody() ?>

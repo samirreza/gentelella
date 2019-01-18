@@ -121,5 +121,19 @@ ul.timeline li {
 }
 
 footer {
-    position: fixed;
+    position: inherit !important;
+}
+
+.nav-md .container.body .right_col {
+    padding: 10px 20px 1px;
+}
+
+.horizontal-menu-buttons {
+    margin-top: 10px;
+    min-width: 70px;
+}
+
+.logout-button, .user-email {
+    float: left;
+    margin: 15px;
 }
