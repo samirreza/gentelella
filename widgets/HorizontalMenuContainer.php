@@ -3,7 +3,7 @@
 namespace theme\widgets;
 
 use Yii;
-use yii\helpers\Html;
+use yii\widgets\Menu;
 
 class HorizontalMenuContainer extends \yii\base\Widget
 {
@@ -18,19 +18,13 @@ class HorizontalMenuContainer extends \yii\base\Widget
         if (empty($buttons)) {
             return;
         }
-        foreach ($buttons as $button) {
-            $visibleFor = (empty($button['visibleFor'])) ? null : $button['visibleFor'];
-            $visible = isset($button['visible']) ? $button['visible'] : true;
-            Html::addCssClass($button['options'], 'horizontal-menu-buttons');
-            echo Button::widget([
-                'url' => $button['url'],
-                'label' => $button['label'],
-                'type' => $button['type'] ?? 'primary',
-                'icon' => false,
-                'visibleFor' => $visibleFor,
-                'visible' => $visible,
-                'options' => $button['options']
-             ]);
-        }
+        echo Menu::widget([
+            'items' => $buttons,
+            'options' => [
+                'class' => 'nav navbar-nav'
+            ],
+            'submenuTemplate' => "\n<ul class='dropdown-menu'>\n{items}\n</ul>\n",
+            'labelTemplate' => '<a class="dropdown-toggle" data-toggle="dropdown" href="#">{label}<span class="caret"></span></a>'
+        ]);
     }
 }

@@ -2,22 +2,22 @@
     font-size: 0 !important;
 }
 
-.input-small + .select2-container,
+.input-small+.select2-container,
 .input-small {
     width: 30% !important;
 }
 
-.input-medium + .select2-container,
+.input-medium+.select2-container,
 .input-medium {
     width: 50% !important;
 }
 
-.input-large + .select2-container,
+.input-large+.select2-container,
 .input-large {
     width: 70% !important;
 }
 
-.input-xlarge + .select2-container,
+.input-xlarge+.select2-container,
 .input-xlarge {
     width: 90% !important;
 }
@@ -103,11 +103,13 @@ ul.timeline li {
 
 .tile-stats h4 {
     color: #34495e !important;
-    margin: 0px 15px 0px 0px !important;;
+    margin: 0px 15px 0px 0px !important;
+    ;
     z-index: 5;
     padding: 0px;
     position: relative;
-    padding-bottom: 4% !important;;
+    padding-bottom: 4% !important;
+    ;
 }
 
 .tile-stats .icon {
@@ -133,7 +135,16 @@ footer {
     min-width: 70px;
 }
 
-.logout-button, .user-email {
+.logout-button,
+.user-email {
     float: left;
     margin: 15px;
+}
+
+span.export-grid-btn {
+    font-size: 25px;
+}
+
+.nav_menu {
+    height: 58px;
 }
