@@ -5,9 +5,9 @@ use yii\helpers\Html;
 use nad\common\SideMenu;
 use yii\widgets\Breadcrumbs;
 use theme\widgets\FlashMessage;
+use theme\widgets\HorizontalMenu;
 use theme\assetbundles\IEAssetBundle;
 use theme\assetbundles\ThemeAssetBundle;
-use theme\widgets\HorizontalMenuContainer;
 
 ThemeAssetBundle::register($this);
 IEAssetBundle::register($this);
@@ -55,7 +55,7 @@ IEAssetBundle::register($this);
                             <div class="nav toggle">
                                 <a id="menu_toggle"><i class="fa fa-bars"></i></a>
                             </div>
-                            <?= HorizontalMenuContainer::widget() ?>
+                            <?= HorizontalMenu::widget() ?>
                             <?= Html::a(
                                 '<i class="fa fa-power-off fa-fw"></i>  خروج',
                                 ['/user/auth/logout'],

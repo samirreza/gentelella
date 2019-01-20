@@ -148,3 +148,11 @@ span.export-grid-btn {
 .nav_menu {
     height: 58px;
 }
+
+ul.dropdown-menu-right {
+    left: auto !important;
+}
+
+.dropdown-menu a {
+    font-size: 15px;
+}
