@@ -23,7 +23,7 @@ class ActionButtons extends Widget
             $visibleFor = (empty($btnOptions['visibleFor'])) ? $this->visibleFor : $btnOptions['visibleFor'];
             $visible = isset($btnOptions['visible']) ? $btnOptions['visible'] : $this->visible;
             $options = (empty($btnOptions['options'])) ? [] : $btnOptions['options'];
-            Html::addCssClass($options, 'btn-app');
+            Html::addCssClass($options, 'btn-top');
             switch ($action) {
                 case 'create':
                     $label = empty($btnOptions['label']) ? 'افزودن' : $btnOptions['label'];
@@ -32,7 +32,7 @@ class ActionButtons extends Widget
                         'url' => ['create'],
                         'label' => $label,
                         'options' => $options,
-                        'icon' => $icon,
+                        'icon' => false,
                         'type' => 'success',
                         'visibleFor' => $visibleFor,
                         'visible' => $visible
@@ -45,7 +45,7 @@ class ActionButtons extends Widget
                         'url' => ['update', 'id' => $this->modelID],
                         'label' => $label,
                         'options' => $options,
-                        'icon' => $icon,
+                        'icon' => false,
                         'type' => 'primary',
                         'visibleFor' => $visibleFor,
                         'visible' => $visible
@@ -58,7 +58,7 @@ class ActionButtons extends Widget
                     echo Button::widget([
                         'url' => ['delete', 'id' => $this->modelID],
                         'label' => $label,
-                        'icon' => $icon,
+                        'icon' => false,
                         'type' => 'danger',
                         'visibleFor' => $visibleFor,
                         'visible' => $visible,
@@ -79,7 +79,7 @@ class ActionButtons extends Widget
                      echo Button::widget([
                         'url' => ['index'],
                         'label' => $label,
-                        'icon' => $icon,
+                        'icon' => false,
                         'type' => 'info',
                         'visibleFor' => $visibleFor,
                         'visible' => $visible,
@@ -91,7 +91,7 @@ class ActionButtons extends Widget
                     $icon = empty($btnOptions['icon']) ? 'camera-retro' : $btnOptions['icon'];
                     echo Button::widget([
                         'label' => $label,
-                        'icon' => $icon,
+                        'icon' => false,
                         'type' => 'info',
                         'url' => ['gallery', 'id' => $this->modelID],
                         'visibleFor' => $visibleFor,
@@ -105,7 +105,7 @@ class ActionButtons extends Widget
                     echo Button::widget([
                         'url' => ['category/index'],
                         'label' => $label,
-                        'icon' => $icon,
+                        'icon' => false,
                         'type' => 'warning',
                         'visibleFor' => $visibleFor,
                         'visible' => $visible,
@@ -117,7 +117,7 @@ class ActionButtons extends Widget
                     echo Button::widget([
                         'url' => $button['url'],
                         'label' => $button['label'],
-                        'icon' => $button['icon'],
+                        'icon' => false,
                         'type' => $button['type'],
                         'visible' => $visible,
                         'visibleFor' => $visibleFor,

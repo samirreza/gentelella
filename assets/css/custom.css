@@ -146,7 +146,7 @@ span.export-grid-btn {
 }
 
 .nav_menu {
-    height: 58px;
+    height: 90px;
 }
 
 ul.dropdown-menu-right {
@@ -155,4 +155,94 @@ ul.dropdown-menu-right {
 
 .dropdown-menu a {
     font-size: 15px;
+}
+
+.nav_menu {
+    position: fixed;
+    z-index: 100;
+}
+
+
+.nav_menu .pull-left {
+    margin-left: 20%;
+    margin-top: 1%;
+}
+
+.breadcrumb {
+    background-color: #EDEDED;
+    position: fixed;
+    margin-top: 12px;
+}
+
+.title h1 {
+    font-size: 20px;
+}
+
+.title {
+    text-align: center;
+    margin-left: 270px;
+}
+
+.go-top {
+    position: fixed;
+    bottom: 2em;
+    right: 96%;
+    text-decoration: none;
+    color: white;
+    background-color: #f6f6f6;
+    background-color: rgba(0, 0, 0, 0.3);
+    font-size: 12px;
+    padding: 22px;
+    border-radius: 3px;
+    display: none;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
+
+.go-top:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.go-top i {
+    height: 0;
+    width: 0;
+    position: absolute;
+    top: 13px;
+    left: 12px;
+    border-bottom: 17px solid white;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+}
+
+.btn-top {
+    min-width: 100px;
+    margin-bottom: 15px;
+}
+
+.fixed-action-buttons {
+    position: fixed;
+    z-index: 9;
+    top: 95px;
+}
+
+.nav_menu .horizontal-menu li.active {
+    background: #d9dee4
+}
+
+.top_nav_fixed {
+    background-color: #EDEDED;
+    height: 90px;
+    position: fixed;
+    z-index: 9;
+    width: 100%;
+}
+
+.right_col {
+    padding-top: 100px !important;
+}
+
+.right_col_with_top_buttons {
+    padding-top: 160px !important;
 }

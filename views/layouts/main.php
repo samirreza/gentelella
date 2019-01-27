@@ -34,7 +34,7 @@ IEAssetBundle::register($this);
             <div class="main_container">
                 <div class="col-md-3 left_col hidden-print">
                     <div class="left_col scroll-view">
-                        <div class="navbar nav_title">
+                        <div class="navbar nav_title" style="border: 0;">
                             <?= Html::a(
                                 Html::tag('span', Yii::$app->name),
                                 Url::home(),
@@ -47,45 +47,38 @@ IEAssetBundle::register($this);
                                 <?= SideMenu::widget() ?>
                             </div>
                         </div>
+                        <div class="sidebar-footer hidden-small"></div>
                     </div>
                 </div>
                 <div class="top_nav hidden-print">
                     <div class="nav_menu">
-                        <nav>
-                            <div class="nav toggle">
-                                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                        <nav style="position: fixed;">
+                            <div class="pull-right">
+                                <div class="nav toggle">
+                                    <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                                </div>
+                                <?= HorizontalMenu::widget() ?>
+                            <div class="pull-left">
+                                <?= Breadcrumbs::widget([
+                                    'tag' => 'ol',
+                                    'homeLink' => [
+                                        'label' => 'خانه',
+                                        'url' => \yii::$app->homeUrl,
+                                        'template' => '<li><i class="fa fa-dashboard"></i> {link}</li>'
+                                    ],
+                                    'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+                                ]) ?>
                             </div>
-                            <?= HorizontalMenu::widget() ?>
-                            <?= Html::a(
-                                '<i class="fa fa-power-off fa-fw"></i>  خروج',
-                                ['/user/auth/logout'],
-                                ['class' => 'logout-button']
-                            ) ?>
-                            <?= Html::a(
-                                Yii::$app->user->identity->email,
-                                '',
-                                ['class' => 'user-email']
-                            ) ?>
                         </nav>
+                        <br><br>
+                        <div class="title">
+                            <h1><?= Html::encode($this->title) ?></h1>
+                        </div>
                     </div>
                 </div>
                 <div class="top_nav top_nav_fixed">
                     <div class="content-header">
                         <div class="row empty-row"></div>
-                        <div class="pull-right">
-                            <h1><?= Html::encode($this->title) ?></h1>
-                        </div>
-                        <div class="pull-left">
-                            <?= Breadcrumbs::widget([
-                                'tag' => 'ol',
-                                'homeLink' => [
-                                    'label' => 'خانه',
-                                    'url' => \yii::$app->homeUrl,
-                                    'template' => '<li><i class="fa fa-dashboard"></i> {link}</li>'
-                                ],
-                                'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-                            ]) ?>
-                        </div>
                     </div>
                 </div>
                 <div class="right_col" role="main">
@@ -100,6 +93,7 @@ IEAssetBundle::register($this);
                 </footer>
             </div>
         </div>
+    <a href="#" class="go-top"><i></i></a>
     <?php $this->endBody() ?>
     </body>
 </html>
