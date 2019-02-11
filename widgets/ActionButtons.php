@@ -33,7 +33,7 @@ class ActionButtons extends Widget
                         'label' => $label,
                         'options' => $options,
                         'icon' => false,
-                        'type' => 'success',
+                        'type' => $btnOptions['type'] ?? 'success',
                         'visibleFor' => $visibleFor,
                         'visible' => $visible
                     ]);
@@ -46,7 +46,7 @@ class ActionButtons extends Widget
                         'label' => $label,
                         'options' => $options,
                         'icon' => false,
-                        'type' => 'primary',
+                        'type' => $btnOptions['type'] ?? 'primary',
                         'visibleFor' => $visibleFor,
                         'visible' => $visible
                      ]);
@@ -59,7 +59,7 @@ class ActionButtons extends Widget
                         'url' => ['delete', 'id' => $this->modelID],
                         'label' => $label,
                         'icon' => false,
-                        'type' => 'danger',
+                        'type' => $btnOptions['type'] ?? 'danger',
                         'visibleFor' => $visibleFor,
                         'visible' => $visible,
                         'options' => array_merge(
@@ -80,7 +80,7 @@ class ActionButtons extends Widget
                         'url' => ['index'],
                         'label' => $label,
                         'icon' => false,
-                        'type' => 'info',
+                        'type' => $btnOptions['type'] ?? 'info',
                         'visibleFor' => $visibleFor,
                         'visible' => $visible,
                         'options' => $options,
@@ -92,7 +92,7 @@ class ActionButtons extends Widget
                     echo Button::widget([
                         'label' => $label,
                         'icon' => false,
-                        'type' => 'info',
+                        'type' => $btnOptions['type'] ?? 'info',
                         'url' => ['gallery', 'id' => $this->modelID],
                         'visibleFor' => $visibleFor,
                         'visible' => $visible,
@@ -106,7 +106,7 @@ class ActionButtons extends Widget
                         'url' => ['category/index'],
                         'label' => $label,
                         'icon' => false,
-                        'type' => 'warning',
+                        'type' => $btnOptions['type'] ?? 'warning',
                         'visibleFor' => $visibleFor,
                         'visible' => $visible,
                         'options' => $options,
