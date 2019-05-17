@@ -5,9 +5,9 @@ use yii\helpers\Html;
 use nad\common\SideMenu;
 use yii\widgets\Breadcrumbs;
 use theme\widgets\FlashMessage;
-use theme\widgets\HorizontalMenu;
 use theme\assetbundles\IEAssetBundle;
 use theme\assetbundles\ThemeAssetBundle;
+use theme\widgets\HorizontalMenuContainer;
 
 ThemeAssetBundle::register($this);
 IEAssetBundle::register($this);
@@ -34,7 +34,7 @@ IEAssetBundle::register($this);
             <div class="main_container">
                 <div class="col-md-3 left_col hidden-print">
                     <div class="left_col scroll-view">
-                        <div class="navbar nav_title" style="border: 0;">
+                        <div class="navbar nav_title">
                             <?= Html::a(
                                 Html::tag('span', Yii::$app->name),
                                 Url::home(),
@@ -47,53 +47,51 @@ IEAssetBundle::register($this);
                                 <?= SideMenu::widget() ?>
                             </div>
                         </div>
-                        <div class="sidebar-footer hidden-small"></div>
                     </div>
                 </div>
                 <div class="top_nav hidden-print">
                     <div class="nav_menu">
-                        <nav style="position: fixed;">
-                            <div class="pull-right">
-                                <div class="nav toggle">
-                                    <a id="menu_toggle"><i class="fa fa-bars"></i></a>
-                                </div>
-                                <?= HorizontalMenu::widget() ?>
-                            <div class="pull-left">
-                                <?= Breadcrumbs::widget([
-                                    'tag' => 'ol',
-                                    'homeLink' => [
-                                        'label' => 'خانه',
-                                        'url' => \yii::$app->homeUrl,
-                                        'template' => '<li><i class="fa fa-dashboard"></i> {link}</li>'
-                                    ],
-                                    'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-                                ]) ?>
+                        <div class="row">
+                            <div class="nav toggle">
+                                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
                             </div>
-                        </nav>
-                        <br><br>
-                        <div class="title">
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <?php if (
+                                    !isset($this->params['disableHorizontalMenu']) ||
+                                    !$this->params['disableHorizontalMenu']
+                                ) : ?>
+                                    <?= HorizontalMenuContainer::widget() ?>
+                                <?php endif; ?>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="">
+                                    <?= Breadcrumbs::widget([
+                                        'tag' => 'ol',
+                                        'homeLink' => [
+                                            'label' => 'خانه',
+                                            'url' => \yii::$app->homeUrl,
+                                            'template' => '<li><i class="fa fa-dashboard"></i> {link}</li>'
+                                        ],
+                                        'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+                                    ]) ?>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row text-center">
                             <h1><?= Html::encode($this->title) ?></h1>
                         </div>
                     </div>
                 </div>
-                <div class="top_nav top_nav_fixed">
-                    <div class="content-header">
-                        <div class="row empty-row"></div>
-                    </div>
-                </div>
                 <div class="right_col" role="main">
                     <div class="clearfix"></div>
+                    <br>
                     <?= $content ?>
                 </div>
-                <footer class="hidden-print">
-                    <div class="pull-left">
-                    قالب پنل مدیریت <?= Yii::$app->name ?>
-                    </div>
-                    <div class="clearfix"></div>
-                </footer>
             </div>
         </div>
-    <a href="#" class="go-top"><i></i></a>
+        <a href="#" class="go-top"><i></i></a>
     <?php $this->endBody() ?>
     </body>
 </html>

@@ -2,22 +2,22 @@
     font-size: 0 !important;
 }
 
-.input-small+.select2-container,
+.input-small + .select2-container,
 .input-small {
     width: 30% !important;
 }
 
-.input-medium+.select2-container,
+.input-medium + .select2-container,
 .input-medium {
     width: 50% !important;
 }
 
-.input-large+.select2-container,
+.input-large + .select2-container,
 .input-large {
     width: 70% !important;
 }
 
-.input-xlarge+.select2-container,
+.input-xlarge + .select2-container,
 .input-xlarge {
     width: 90% !important;
 }
@@ -63,7 +63,7 @@
     left: 0;
     right: auto;
     float: none;
-    background: #F7F7F7;
+    background: #f7f7f7;
     padding-right: 10px;
 }
 
@@ -95,7 +95,7 @@ ul.timeline li {
     position: relative;
     border: 1px solid #34495e !important;
     border-radius: 5px;
-    transition: all .3s ease-in-out;
+    transition: all 0.3s ease-in-out;
     margin: 0 10px 0 0;
     z-index: 5;
     padding: 0;
@@ -104,12 +104,10 @@ ul.timeline li {
 .tile-stats h4 {
     color: #34495e !important;
     margin: 0px 15px 0px 0px !important;
-    ;
     z-index: 5;
     padding: 0px;
     position: relative;
     padding-bottom: 4% !important;
-    ;
 }
 
 .tile-stats .icon {
@@ -126,61 +124,52 @@ footer {
     position: inherit !important;
 }
 
-.nav-md .container.body .right_col {
-    padding: 10px 20px 1px;
-}
-
-.horizontal-menu-buttons {
-    margin-top: 10px;
-    min-width: 70px;
-}
-
-.logout-button,
-.user-email {
-    float: left;
-    margin: 15px;
-}
-
-span.export-grid-btn {
-    font-size: 25px;
-}
-
+/* //////////////////// */
 .nav_menu {
-    height: 90px;
+    min-height: 56px;
+    height: 100%;
 }
 
-ul.dropdown-menu-right {
-    left: auto !important;
+#horizontal-navbar {
+    background-color: #ededed;
+    border-color: #ededed;
 }
 
-.dropdown-menu a {
-    font-size: 15px;
-}
-
-.nav_menu {
-    position: fixed;
-    z-index: 100;
-}
-
-
-.nav_menu .pull-left {
-    margin-left: 20%;
-    margin-top: 1%;
+.navbar-header {
+    background-color: #ededed;
 }
 
 .breadcrumb {
-    background-color: #EDEDED;
-    position: fixed;
-    margin-top: 12px;
+    float: left;
+    background-color: #ededed;
+    margin-top: 10px;
 }
 
-.title h1 {
-    font-size: 20px;
+#menu_toggle {
+    margin-right: 15px;
 }
 
-.title {
+.circle {
+    margin-bottom: 30px;
+    height: 0;
+    padding: 30% 0;
+    padding-top: 15%;
+    border-radius: 20%;
+    background: #38a9e4;
+    font-size: 30px;
     text-align: center;
-    margin-left: 270px;
+}
+
+.circle a {
+    color: white;
+}
+
+.circle a:hover {
+    color: white;
+}
+
+#horizontal-navbar ul.dropdown-menu {
+    left: auto !important;
 }
 
 .go-top {
@@ -216,33 +205,7 @@ ul.dropdown-menu-right {
     border-right: 10px solid transparent;
 }
 
-.btn-top {
+.action-button {
     min-width: 100px;
-    margin-bottom: 15px;
 }
-
-.fixed-action-buttons {
-    position: fixed;
-    z-index: 9;
-    top: 95px;
-}
-
-.nav_menu .horizontal-menu li.active {
-    background: #d9dee4
-}
-
-.top_nav_fixed {
-    background-color: #EDEDED;
-    height: 90px;
-    position: fixed;
-    z-index: 9;
-    width: 100%;
-}
-
-.right_col {
-    padding-top: 100px !important;
-}
-
-.right_col_with_top_buttons {
-    padding-top: 160px !important;
-}
+/* //////////////////// */

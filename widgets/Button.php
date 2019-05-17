@@ -33,7 +33,7 @@ class Button extends Widget
             );
         }
         $this->checkIfVisible();
-        Html::addCssClass($this->options, 'btn');
+        Html::addCssClass($this->options, 'btn action-button');
         if (empty($this->type)) {
             Html::addCssClass($this->options, 'btn-default');
         } else {
@@ -46,9 +46,9 @@ class Button extends Widget
         if (!$this->visible) {
             return;
         }
-        if ($this->icon) {
-            $this->label = '<i class="fa fa-' . $this->icon . '"></i> ' . $this->label;
-        }
+        // if ($this->icon) {
+        //     $this->label = '<i class="fa fa-' . $this->icon . '"></i> ' . $this->label;
+        // }
         echo Html::a($this->label, $this->url, $this->options);
     }
 

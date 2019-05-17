@@ -15,7 +15,6 @@ class Panel extends Widget
     public $tools;
     public $showCloseButton = false;
     public $showCollapseButton = false;
-    public $closed = false;
 
     public function init()
     {
@@ -36,15 +35,11 @@ class Panel extends Widget
             );
         }
         if ($this->showCollapseButton) {
-            $class = 'collapse-link';
-            if ($this->closed) {
-                $class .= ' closed-panel';
-            }
             $this->tools = $this->tools . Html::a(
                 '<i class="fa fa-angle-up"></i>',
                 null,
                 [
-                    'class' => $class
+                    'class' => 'collapse-link'
                 ]
             );
         }
