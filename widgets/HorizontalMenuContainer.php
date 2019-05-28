@@ -11,9 +11,15 @@ class HorizontalMenuContainer extends \yii\base\Widget
     public function run()
     {
         $module = Yii::$app->controller->module;
-        if (!isset($module->horizontalMenuItems)) {
-            return;
-        }
+        $horizontalMenuItems = array_merge(
+            [
+                [
+                    'label' => 'خروج',
+                    'url' => ['/user/auth/logout']
+                ],
+            ],
+            $module->horizontalMenuItems ?? []
+        );
         NavBar::begin([
             'options' => [
                 'id' => 'horizontal-navbar'
@@ -21,7 +27,7 @@ class HorizontalMenuContainer extends \yii\base\Widget
         ]);
         echo NavX::widget([
             'options' => ['class' => 'navbar-nav '],
-            'items' => $module->horizontalMenuItems,
+            'items' => $horizontalMenuItems,
             'activateParents' => true,
             'encodeLabels' => false
         ]);

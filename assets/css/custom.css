@@ -172,6 +172,11 @@ footer {
     left: auto !important;
 }
 
+#horizontal-navbar li.active > a {
+    background-color: #cecece;
+}
+
+
 .go-top {
     position: fixed;
     bottom: 2em;
