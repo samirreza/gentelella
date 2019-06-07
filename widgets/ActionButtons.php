@@ -23,7 +23,7 @@ class ActionButtons extends Widget
             $visibleFor = (empty($btnOptions['visibleFor'])) ? $this->visibleFor : $btnOptions['visibleFor'];
             $visible = isset($btnOptions['visible']) ? $btnOptions['visible'] : $this->visible;
             $options = (empty($btnOptions['options'])) ? [] : $btnOptions['options'];
-            Html::addCssClass($options, 'btn-app');
+            Html::addCssClass($options, 'btn');
             switch ($action) {
                 case 'create':
                     $label = empty($btnOptions['label']) ? 'افزودن' : $btnOptions['label'];

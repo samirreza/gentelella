@@ -33,7 +33,7 @@ class Button extends Widget
             );
         }
         $this->checkIfVisible();
-        Html::addCssClass($this->options, 'btn action-button');
+        Html::addCssClass($this->options, 'btn btn-xs action-button');
         if (empty($this->type)) {
             Html::addCssClass($this->options, 'btn-default');
         } else {
