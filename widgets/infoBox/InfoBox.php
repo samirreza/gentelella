@@ -9,9 +9,11 @@ class InfoBox extends Widget
 {
     public $icon = 'user';
     public $count = 0;
+    public $showCount = true;
     public $title = 'عنوان';
+    public $titleUrl = false;
     public $visible = true;
-    public $visibleFor;
+    public $visibleFor;    
 
     public function init()
     {
@@ -28,14 +30,16 @@ class InfoBox extends Widget
     {
         if (!$this->visible) {
             return;
-        }
+        }      
 
         return $this->render(
             'box',
             [
                 'title' => $this->title,
+                'titleUrl' => $this->titleUrl,
                 'count' => $this->count,
-                'icon' => $this->icon
+                'icon' => $this->icon,
+                'showCount' => $this->showCount
             ]
         );
     }
