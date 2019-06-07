@@ -141,8 +141,13 @@ footer {
 
 .breadcrumb {
     float: left;
-    background-color: #ededed;
-    margin-top: 10px;
+    background-color: #ededed;   
+    margin-bottom: 0; 
+    padding: 10px 0 0 0 !important;    
+}
+
+.breadcrumb > li + li::before {
+    padding: 0 !important;
 }
 
 #menu_toggle {
@@ -158,6 +163,7 @@ footer {
     background: #38a9e4;
     font-size: 30px;
     text-align: center;
+    color: white;
 }
 
 .circle a {
@@ -172,10 +178,32 @@ footer {
     left: auto !important;
 }
 
-#horizontal-navbar li.active > a {
-    background-color: #cecece;
+
+#horizontal-navbar-collapse {
+    padding: 0 !important;
 }
 
+#horizontal-navbar-collapse li a{
+    padding: 8px;
+}
+
+#horizontal-navbar-collapse li.dropdown ul.dropdown-menu li a{
+    padding: 12px 20px;
+}
+
+.navbar.nav_title .site_title.logout-button{
+    font-size: medium;
+    text-align: left;
+}
+
+.top_nav .nav_menu div.row.text-center h4{
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.top_nav div.nav_menu{
+    margin-bottom: 0px !important;
+}
 
 .go-top {
     position: fixed;
@@ -212,5 +240,13 @@ footer {
 
 .action-button {
     min-width: 100px;
+}
+
+.tile-stats .title{
+    margin: 0 10px 0 0;    
+    padding: 0;
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 2.5;
 }
 /* //////////////////// */
