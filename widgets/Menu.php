@@ -40,17 +40,14 @@ class Menu extends \yii\widgets\Menu
             $item['url'] = 'javascript:void(0)';
         }
         $renderedItem = parent::renderItem($item);
-        if (isset($item['badge'])) {
-            $badgeOptions = ArrayHelper::getValue($item, 'badgeOptions', []);
-            Html::addCssClass($badgeOptions, 'label pull-left');
-        } else {
-            $badgeOptions = null;
+        if (!isset($item['badge'])) {
+            $item['badge'] = null;
         }
         return strtr(
             $renderedItem,
             [
                 '{icon}' => $iconTemplate,
-                '{badge}' => ''
+                '{badge}' =>  "<span class='badge bg-red badge-menu pull-left'>{$item['badge']}</span>"
             ]
         );
     }
