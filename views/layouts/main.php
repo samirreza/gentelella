@@ -64,6 +64,9 @@ IEAssetBundle::register($this);
                             <div class="col-md-1 nav toggle">
                                 <a id="menu_toggle"><i class="fa fa-bars"></i></a>
                             </div>
+                            <div class="col-md-1 nav toggle">
+                                <a onclick="openFullscreen();"><i class="fa fa-arrows"></i></a>
+                            </div>
                             <div class="col-md-5">
                                 <?php if (
                                     !isset($this->params['disableHorizontalMenu']) ||
@@ -72,7 +75,7 @@ IEAssetBundle::register($this);
                                     <?= HorizontalMenuContainer::widget() ?>
                                 <?php endif; ?>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-5">
                                 <div class="">
                                     <?= Breadcrumbs::widget([
                                         'tag' => 'ol',
@@ -97,7 +100,7 @@ IEAssetBundle::register($this);
                             </div>
                         </div>
                         <div class="row">
-                            
+
                         </div>
                         <!-- <div class="row text-center">
                             <h4><?= Html::encode($this->title) ?></h4>
