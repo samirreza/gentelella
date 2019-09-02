@@ -1,4 +1,8 @@
-$().ready(function() {
+$().ready(function() {   
+    $(window).on('hashchange',function(){ 
+        window.location.reload(true); 
+    });
+    
     $(document).on("click", "a.ajaxcreate, .ajaxupdate, .ajaxview", function(
         event
     ) {
@@ -133,4 +137,9 @@ $().ready(function() {
                 }, index * 4000 + 4000);
             });
     }
+
+    if( location.hash && location.hash.length > 0 ) {
+        let hashStr = location.hash.substr(1);                
+        $("." + hashStr).click();
+     } 
 });
