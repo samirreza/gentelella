@@ -139,7 +139,7 @@ $().ready(function() {
     }
 
     if( location.hash && location.hash.length > 0 ) {
-        var hashStr = location.hash.substr(1);                
+        let hashStr = location.hash.substr(1);                
         $("." + hashStr).click();
      } 
 });
