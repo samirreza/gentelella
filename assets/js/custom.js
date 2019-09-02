@@ -9,6 +9,12 @@ if ($(".flash-message-container").length > 0) {
         });
 }
 
+$("document").ready(function() {
+    $(".action-button").parent().css('position', 'fixed');
+    $(".action-button").parent().css('z-index', '9');
+    $(".action-button").parent().css('margin-top', '-40px');
+});
+
 $(".collapse-link").on("click", function() {
     var panel = $(this).closest(".panel"),
         icon = $(this).find("i"),
@@ -32,7 +38,7 @@ $(".go-top").click(function(event) {
     $("html, body").animate({ scrollTop: 0 }, 300);
 });
 
-function toggleFullscreen() {    
+function toggleFullscreen() {
     var isInFullScreen = (document.fullscreenElement && document.fullscreenElement !== null) ||
         (document.webkitFullscreenElement && document.webkitFullscreenElement !== null) ||
         (document.mozFullScreenElement && document.mozFullScreenElement !== null) ||
