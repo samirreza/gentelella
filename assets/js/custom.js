@@ -10,9 +10,9 @@ if ($(".flash-message-container").length > 0) {
 }
 
 $("document").ready(function() {
-    $(".action-button").parent().css('position', 'fixed');
-    $(".action-button").parent().css('z-index', '9');
-    $(".action-button").parent().css('margin-top', '-40px');
+    // $(".action-button").parent().css('position', 'fixed');
+    // $(".action-button").parent().css('z-index', '8');
+    // $(".action-button").parent().css('margin-top', '-40px');
 });
 
 $(".collapse-link").on("click", function() {

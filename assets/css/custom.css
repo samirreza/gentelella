@@ -254,13 +254,13 @@ footer {
 .nav_menu {
     position: fixed;
     top: 0;
-    width: 100%;
+    width: 85%;
     /* margin-bottom: 25px; */
     z-index: 9;
-    height: 100px;
+    height: 80px;
 }
 
 .right_col {
-    padding-top: 85px !important;
+    padding-top: 65px !important;
 }
 
