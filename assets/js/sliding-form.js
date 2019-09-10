@@ -14,6 +14,7 @@ $().ready(function() {
         $.ajax({
             url: $(this).attr("href"),
             type: "post",
+            data: $(this).attr("data-params"),
             dataType: "json",
             success: function(data) {
                 hideLoading();
