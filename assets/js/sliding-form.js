@@ -1,8 +1,4 @@
-$().ready(function() {   
-    $(window).on('hashchange',function(){ 
-        window.location.reload(true); 
-    });
-    
+$().ready(function() {
     $(document).on("click", "a.ajaxcreate, .ajaxupdate, .ajaxview", function(
         event
     ) {
@@ -92,6 +88,8 @@ $().ready(function() {
         });
     });
 
+    processLocationHash();
+
     function getSlidingFormWrapper(element) {
         slidingFormId = element.attr("data-sliding-form-wrapper-id");
         if (slidingFormId) {
@@ -139,8 +137,36 @@ $().ready(function() {
             });
     }
 
-    if( location.hash && location.hash.length > 0 ) {
-        let hashStr = location.hash.substr(1);                
-        $("." + hashStr).click();
-     } 
+    function processLocationHash() {
+        $(window).on("hashchange", function() {
+            window.location.reload();
+        });
+
+        let locationHash = location.hash;
+        let hashSeperator = "_";
+        if (
+            locationHash &&
+            locationHash.length >= 4 && // at least: "#a_b"
+            locationHash.indexOf(hashSeperator) >= 2
+        ) {
+            let hashStr = locationHash.substr(1); // ignore first "#" char
+            let hashParts = hashStr.split(hashSeperator);
+            let selectorType = hashParts[0];
+            let selectorName = hashParts[1];
+
+            switch (selectorType.toLowerCase()) {
+                case "id":
+                    $("#" + selectorName).click();
+                    break;
+                case "class":
+                    $("." + selectorName).click();                    
+                    break;
+                default:
+                    console.log(
+                        "ERROR: Bad selector type specified: " + selectorType
+                    );
+                    break;
+            }
+        }
+    }
 });
