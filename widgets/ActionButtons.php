@@ -10,6 +10,7 @@ class ActionButtons extends Widget
     public $buttons;
     public $modelID = null;
     public $visibleFor = null;
+    public $visible = true;
     private $defaultIcon = 'caret-square-o-left';
     private $defaultLabel = 'دکمه';
     private $defaultType = 'primary';
@@ -19,10 +20,10 @@ class ActionButtons extends Widget
         echo '<div class="row">';
         echo '<div class="col-sm-12">';
         foreach ($this->buttons as $action => $btnOptions) {
-            $visibleFor = (empty($btnOptions['visibleFor'])) ? null : $btnOptions['visibleFor'];
-            $visible = (empty($btnOptions['visible'])) ? true : $btnOptions['visible'];
+            $visibleFor = (empty($btnOptions['visibleFor'])) ? $this->visibleFor : $btnOptions['visibleFor'];
+            $visible = isset($btnOptions['visible']) ? $btnOptions['visible'] : $this->visible;
             $options = (empty($btnOptions['options'])) ? [] : $btnOptions['options'];
-            Html::addCssClass($options, 'btn-app');
+            Html::addCssClass($options, 'btn');
             switch ($action) {
                 case 'create':
                     $label = empty($btnOptions['label']) ? 'افزودن' : $btnOptions['label'];
@@ -34,30 +35,35 @@ class ActionButtons extends Widget
                         'icon' => $icon,
                         'type' => 'success',
                         'visibleFor' => $visibleFor,
+                        'visible' => $visible
                     ]);
                     break;
                 case 'update':
                     $label = empty($btnOptions['label']) ? 'ویرایش' : $btnOptions['label'];
                     $icon = empty($btnOptions['icon']) ? 'edit' : $btnOptions['icon'];
+                    $type = empty($btnOptions['type']) ? 'primary' : $btnOptions['type'];
                     echo Button::widget([
                         'url' => ['update', 'id' => $this->modelID],
                         'label' => $label,
                         'options' => $options,
                         'icon' => $icon,
-                        'type' => 'primary',
+                        'type' => $type,
                         'visibleFor' => $visibleFor,
+                        'visible' => $visible
                      ]);
 
                     break;
                 case 'delete':
                     $label = empty($btnOptions['label']) ? 'حذف' : $btnOptions['label'];
                     $icon = empty($btnOptions['icon']) ? 'times' : $btnOptions['icon'];
+                    $type = empty($btnOptions['type']) ? 'danger' : $btnOptions['type'];
                     echo Button::widget([
                         'url' => ['delete', 'id' => $this->modelID],
                         'label' => $label,
                         'icon' => $icon,
-                        'type' => 'danger',
+                        'type' => $type,
                         'visibleFor' => $visibleFor,
+                        'visible' => $visible,
                         'options' => array_merge(
                             $options,
                             [
@@ -78,6 +84,7 @@ class ActionButtons extends Widget
                         'icon' => $icon,
                         'type' => 'info',
                         'visibleFor' => $visibleFor,
+                        'visible' => $visible,
                         'options' => $options,
                      ]);
                     break;
@@ -90,6 +97,7 @@ class ActionButtons extends Widget
                         'type' => 'info',
                         'url' => ['gallery', 'id' => $this->modelID],
                         'visibleFor' => $visibleFor,
+                        'visible' => $visible,
                         'options' => $options
                      ]);
                     break;
@@ -102,6 +110,7 @@ class ActionButtons extends Widget
                         'icon' => $icon,
                         'type' => 'warning',
                         'visibleFor' => $visibleFor,
+                        'visible' => $visible,
                         'options' => $options,
                     ]);
                     break;
@@ -114,6 +123,7 @@ class ActionButtons extends Widget
                         'type' => $button['type'],
                         'visible' => $visible,
                         'visibleFor' => $visibleFor,
+                        'visible' => $visible,
                         'options' => $options,
                      ]);
                     break;

@@ -33,7 +33,7 @@ class Button extends Widget
             );
         }
         $this->checkIfVisible();
-        Html::addCssClass($this->options, 'btn');
+        Html::addCssClass($this->options, 'btn btn-xs action-button');
         if (empty($this->type)) {
             Html::addCssClass($this->options, 'btn-default');
         } else {
@@ -54,6 +54,9 @@ class Button extends Widget
 
     private function checkIfVisible()
     {
+        if (!$this->visible) {
+            return;
+        }
         if (isset($this->visibleFor)) {
             $this->visible = false;
             foreach ($this->visibleFor as $permission) {

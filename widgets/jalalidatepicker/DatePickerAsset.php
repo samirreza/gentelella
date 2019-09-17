@@ -16,6 +16,6 @@ class DatePickerAsset extends AssetBundle
     ];
     public $depends = [
         'yii\web\JqueryAsset',
-        'themes\admin360\assetbundles\BootstrapRTLAsset',
+        'theme\assetbundles\BootstrapRTLAsset',
     ];
 }

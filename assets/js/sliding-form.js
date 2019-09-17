@@ -1,59 +1,68 @@
 $().ready(function() {
-    $(document).on('click', 'a.ajaxcreate, .ajaxupdate, .ajaxview', function(event) {
+    $(document).on("click", "a.ajaxcreate, .ajaxupdate, .ajaxview", function(
+        event
+    ) {
         event.preventDefault();
+        window.scrollTo(0, 0);
         showLoading();
-        $('div.sliding-form-wrapper').slideUp(300);
+        slidingFormWrapper = getSlidingFormWrapper($(this));
+        slidingFormWrapper.slideUp(300);
         $.ajax({
-            url: $(this).attr('href'),
-            type: 'post',
-            dataType: 'json',
+            url: $(this).attr("href"),
+            type: "post",
+            data: $(this).attr("data-params"),
+            dataType: "json",
             success: function(data) {
                 hideLoading();
-                $('div.sliding-form-wrapper').html(data.content).slideDown(500);
+                slidingFormWrapper.html(data.content).slideDown(500);
             }
         });
     });
 
-    $(document).on('click', 'a.close-sliding-form-button', function(event) {
+    $(document).on("click", "a.close-sliding-form-button", function(event) {
         event.preventDefault();
-        $('div.sliding-form-wrapper').slideUp(500);
+        getSlidingFormWrapper($(this)).slideUp(300);
     });
 
-    $(document).on('submit', 'form.sliding-form', function(event) {
+    $(document).on("submit", "form.sliding-form", function(event) {
         event.preventDefault();
         showLoading();
-        $('.sliding-form-wrapper button.submit').attr('disabled', 'disabled');
+        $(this)
+            .find("button.submit")
+            .attr("disabled", "disabled");
+        slidingFormWrapper = getSlidingFormWrapper($(this));
         $.ajax({
-            url: $(this).attr('action'),
-            type: 'post',
-            dataType: 'json',
+            url: $(this).attr("action"),
+            type: "post",
+            dataType: "json",
             data: new FormData($(this)[0]),
             cache: false,
             contentType: false,
             processData: false,
-            async: false
+            async: true
         }).done(function(data) {
             hideLoading();
-            if (data.status == 'success' || data.status == 'danger') {
-                $('div.sliding-form-wrapper').slideUp(500);
+            if (data.status == "success" || data.status == "danger") {
+                slidingFormWrapper.slideUp(300);
+                slidingFormWrapper.empty();
                 showAlert(data.message, data.status);
                 refreshGrid();
             } else {
-                $('div.sliding-form-wrapper').html(data.content);
-                $('.sliding-form-wrapper button.submit').removeAttr('disabled');
+                slidingFormWrapper.html(data.content);
+                slidingFormWrapper.find("button.submit").removeAttr("disabled");
             }
         });
     });
 
-    $(document).on('click', 'a.ajaxdelete', function(event) {
+    $(document).on("click", "a.ajaxdelete", function(event) {
         event.preventDefault();
         showLoading();
-        if (confirm($(this).attr('data-confirmmsg'))) {
-            $('div.sliding-form-wrapper').slideUp(500);
+        if (confirm($(this).attr("data-confirmmsg"))) {
+            getSlidingFormWrapper($(this)).slideUp(300);
             $.ajax({
-                url: $(this).attr('href'),
-                type: 'post',
-                dataType: 'json'
+                url: $(this).attr("href"),
+                type: "post",
+                dataType: "json"
             }).done(function(data) {
                 hideLoading();
                 showAlert(data.message, data.status);
@@ -61,17 +70,17 @@ $().ready(function() {
             });
         } else {
             hideLoading();
-        };
+        }
     });
 
-    $(document).on('click', 'a.ajaxrequest', function(event) {
+    $(document).on("click", "a.ajaxrequest", function(event) {
         event.preventDefault();
         showLoading();
-        $('div.sliding-form-wrapper').slideUp(500);
+        getSlidingFormWrapper($(this)).slideUp(500);
         $.ajax({
-            url: $(this).attr('href'),
-            type: 'post',
-            dataType: 'json'
+            url: $(this).attr("href"),
+            type: "post",
+            dataType: "json"
         }).done(function(data) {
             hideLoading();
             showAlert(data.message, data.status);
@@ -79,36 +88,85 @@ $().ready(function() {
         });
     });
 
+    processLocationHash();
+
+    function getSlidingFormWrapper(element) {
+        slidingFormId = element.attr("data-sliding-form-wrapper-id");
+        if (slidingFormId) {
+            return $("#" + slidingFormId);
+        }
+        return $("div.sliding-form-wrapper");
+    }
+
     function showLoading() {
-        loadingDiv = $('<div class="loading-gif"><i class="fa fa-spinner fa-pulse fa-3x"></i></div>');
-        $('body').prepend(loadingDiv);
+        loadingDiv = $(
+            '<div class="loading-gif"><i class="fa fa-spinner fa-pulse fa-3x"></i></div>'
+        );
+        $("body").prepend(loadingDiv);
     }
 
     function hideLoading() {
-        $('.loading-gif').css('display', 'none');
+        $(".loading-gif").css("display", "none");
     }
 
     function refreshGrid() {
-        idOfPjax = $('a.ajaxcreate').attr('data-gridpjaxid');
+        idOfPjax = $("a.ajaxcreate").attr("data-gridpjaxid");
         $.pjax.defaults.timeout = false;
-        $.pjax.reload({container:'#'+idOfPjax});
+        $.pjax.reload({ container: "#" + idOfPjax });
     }
 
     function showAlert(message, status) {
-        status = status || 'success';
+        status = status || "success";
         if (!Array.isArray(message)) {
             message = [message];
         }
         message.forEach(function(message) {
-            alertDiv = $('<div class="alert-' + status + ' alert fade in"></div>');
+            alertDiv = $(
+                '<div class="alert-' + status + ' alert fade in"></div>'
+            );
             alertDiv.html(message);
             $(".flash-message-container").append(alertDiv);
         });
-        $(".flash-message-container").children().each(function(index) {
-            var $alertDiv = $(this);
-            setTimeout(function() {
-                $alertDiv.alert('close');
-            }, (index * 4000) + 4000);
+        $(".flash-message-container")
+            .children()
+            .each(function(index) {
+                var $alertDiv = $(this);
+                setTimeout(function() {
+                    $alertDiv.alert("close");
+                }, index * 4000 + 4000);
+            });
+    }
+
+    function processLocationHash() {
+        $(window).on("hashchange", function() {
+            window.location.reload();
         });
+
+        let locationHash = location.hash;
+        let hashSeperator = "_";
+        if (
+            locationHash &&
+            locationHash.length >= 4 && // at least: "#a_b"
+            locationHash.indexOf(hashSeperator) >= 2
+        ) {
+            let hashStr = locationHash.substr(1); // ignore first "#" char
+            let hashParts = hashStr.split(hashSeperator);
+            let selectorType = hashParts[0];
+            let selectorName = hashParts[1];
+
+            switch (selectorType.toLowerCase()) {
+                case "id":
+                    $("#" + selectorName).click();
+                    break;
+                case "class":
+                    $("." + selectorName).click();                    
+                    break;
+                default:
+                    console.log(
+                        "ERROR: Bad selector type specified: " + selectorType
+                    );
+                    break;
+            }
+        }
     }
 });

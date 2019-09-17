@@ -1,11 +1,13 @@
 <?php
 
+use yii\helpers\Url;
 use yii\helpers\Html;
-use theme\widgets\Menu;
+use nad\common\SideMenu;
 use yii\widgets\Breadcrumbs;
 use theme\widgets\FlashMessage;
 use theme\assetbundles\IEAssetBundle;
 use theme\assetbundles\ThemeAssetBundle;
+use theme\widgets\HorizontalMenuContainer;
 
 ThemeAssetBundle::register($this);
 IEAssetBundle::register($this);
@@ -32,48 +34,87 @@ IEAssetBundle::register($this);
             <div class="main_container">
                 <div class="col-md-3 left_col hidden-print">
                     <div class="left_col scroll-view">
-                        <div class="navbar nav_title"></div>
+                        <div class="navbar nav_title">
+                            <div class="col-md-6">
+                                <?= Html::a(
+                                    Html::tag('span', Yii::$app->name),
+                                    Url::home(),
+                                    ['class' => 'site_title']
+                                ) ?>
+                            </div>
+                            <div class="col-md-6">
+                                <?= Html::a(
+                                    '(خروج)',
+                                    ['/user/auth/logout'],
+                                    ['class' => 'site_title logout-button']
+                                ) ?>
+                            </div>
+                        </div>
                         <div class="clearfix"></div>
                         <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
                             <div class="menu_section">
-                                <?= Menu::widget() ?>
+                                <?= SideMenu::widget() ?>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="top_nav hidden-print">
                     <div class="nav_menu">
-                        <nav>
-                            <div class="nav toggle">
+                        <div class="row">
+                            <div class="col-md-1 nav toggle">
                                 <a id="menu_toggle"><i class="fa fa-bars"></i></a>
                             </div>
-                        </nav>
-                    </div>
-                </div>
-                <div class="top_nav top_nav_fixed">
-                    <div class="content-header">
-                        <div class="row empty-row"></div>
-                        <div class="pull-right">
-                            <h1><?= Html::encode($this->title) ?></h1>
+                            <div class="col-md-1 nav toggle">
+                                <a onclick="toggleFullscreen();"><i class="fa fa-arrows"></i></a>
+                            </div>
+                            <div class="col-md-5">
+                                <?php if (
+                                    !isset($this->params['disableHorizontalMenu']) ||
+                                    !$this->params['disableHorizontalMenu']
+                                ) : ?>
+                                    <?= HorizontalMenuContainer::widget() ?>
+                                <?php endif; ?>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="">
+                                    <?= Breadcrumbs::widget([
+                                        'tag' => 'ol',
+                                        'homeLink' => [
+                                            'label' => 'خانه',
+                                            'url' => \yii::$app->homeUrl,
+                                            'template' => '<li><i class="fa fa-dashboard"></i> {link}</li>'
+                                        ],
+                                        'links' => isset($this->params['breadcrumbs']) ? array_map(function($link){
+                                                    if(!isset($link['label']))
+                                                        return ((mb_strlen($link) > 30 )?mb_substr($link, 0, 30) . '...':$link);
+
+                                                    $newlabel = (mb_strlen($link['label']) > 30 )?mb_substr($link['label'], 0, 30) . '...':$link['label'];
+                                                    $newUrl = [
+                                                        'label' => $newlabel,
+                                                        'url' => $link['url']
+                                                    ];
+                                                    return $newUrl;
+                                                }, $this->params['breadcrumbs']) : [],
+                                    ]) ?>
+                                </div>
+                            </div>
                         </div>
-                        <div class="pull-left">
-                            <?= Breadcrumbs::widget([
-                                'tag' => 'ol',
-                                'homeLink' => [
-                                    'label' => 'خانه',
-                                    'url' => \yii::$app->homeUrl,
-                                    'template' => '<li><i class="fa fa-dashboard"></i> {link}</li>'
-                                ],
-                                'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-                            ]) ?>
+                        <div class="row">
+
                         </div>
+                        <!-- <div class="row text-center">
+                            <h4><?= Html::encode($this->title) ?></h4>
+                        </div> -->
                     </div>
                 </div>
                 <div class="right_col" role="main">
+                    <div class="clearfix"></div>
+                    <br>
                     <?= $content ?>
                 </div>
             </div>
         </div>
+        <a href="#" class="go-top"><i></i></a>
     <?php $this->endBody() ?>
     </body>
 </html>
