@@ -273,7 +273,16 @@ h4.nad-page-title{
     */
     display: table;    
     margin: 5px auto;
-    padding: 0 0 3px 0;
-    border-bottom: 2px solid #3b5571;
+    padding: 0 0 3px 0;    
     color: #3b5571;
+}
+
+h4.nad-page-title .nad-page-title-focus{
+    border-bottom: 2px solid #3b5571;
+}
+
+.input-group-addon:last-child {
+    border-right-width: 1px;
+    border-right-style: solid;    
+    border-left: 0;
 }
