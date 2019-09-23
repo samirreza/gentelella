@@ -2,7 +2,7 @@ if ($(".flash-message-container").length > 0) {
     $(".flash-message-container")
         .children()
         .each(function(index) {
-            var $alertDiv = $(this);
+            let $alertDiv = $(this);
             setTimeout(function() {
                 $alertDiv.alert("close");
             }, index * 4000 + 4000);
@@ -10,13 +10,43 @@ if ($(".flash-message-container").length > 0) {
 }
 
 $("document").ready(function() {
-    // $(".action-button").parent().css('position', 'fixed');
-    // $(".action-button").parent().css('z-index', '8');
-    // $(".action-button").parent().css('margin-top', '-40px');
+    let actionBtnClass = ".action-button";    
+    let actionBtnContainer = $(actionBtnClass).parent().clone();    
+    let actionBtnTop = $(actionBtnClass).offset().top;
+    let actionBtnHeight = $(actionBtnClass).height();
+
+    let navMenuClass = ".nav_menu";
+    let navMenuElement = $(navMenuClass);
+    let navMenuHeight = navMenuElement.height();
+
+    let extraMargin = 5;    
+
+    $(window).scroll(function(){        
+        if($(this).scrollTop() <= actionBtnTop - 2 * actionBtnHeight){      
+            navMenuElement.css({"box-shadow": "none"});
+            navMenuElement.css({"-moz-box-shadow": "none"});
+            navMenuElement.css({"-webkit-box-shadow": "none"});                        
+            if( navMenuElement.find(actionBtnClass).length > 0){ // exists
+                navMenuElement.height(navMenuHeight - actionBtnHeight - extraMargin);
+                navMenuElement.find(actionBtnClass).parent().remove()
+            }            
+          }else if($(this).scrollTop() > (navMenuElement.offset().top - 2 * actionBtnHeight)){
+            if( navMenuElement.find(actionBtnClass).length == 0){ // not exists 
+                navMenuElement.height(navMenuHeight + actionBtnHeight + extraMargin);
+                navMenuElement.append(actionBtnContainer); 
+            }      
+            navMenuElement.css({                
+                "border-bottom": "1px solid #DDDDDD",
+                "box-shadow": "0 7px 7px -6px #888888",
+                "-moz-box-shadow": "0 7px 7px -6px #888888",
+                "-webkit-box-shadow": "0 7px 7px -6px #888888"
+            });            
+          }
+    });    
 });
 
 $(".collapse-link").on("click", function() {
-    var panel = $(this).closest(".panel"),
+    let panel = $(this).closest(".panel"),
         icon = $(this).find("i"),
         content = panel.find(".panel-body");
     content.slideToggle(200);
@@ -39,12 +69,12 @@ $(".go-top").click(function(event) {
 });
 
 function toggleFullscreen() {
-    var isInFullScreen = (document.fullscreenElement && document.fullscreenElement !== null) ||
+    let isInFullScreen = (document.fullscreenElement && document.fullscreenElement !== null) ||
         (document.webkitFullscreenElement && document.webkitFullscreenElement !== null) ||
         (document.mozFullScreenElement && document.mozFullScreenElement !== null) ||
         (document.msFullscreenElement && document.msFullscreenElement !== null);
 
-    var elem = document.documentElement;
+    let elem = document.documentElement;
     if (!isInFullScreen) {
         if (elem.requestFullscreen) {
             elem.requestFullscreen();
