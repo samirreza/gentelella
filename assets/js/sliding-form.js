@@ -126,6 +126,7 @@ $().ready(function() {
             );
             alertDiv.html(message);
             $(".flash-message-container").append(alertDiv);
+            $(".flash-message-container").show();
         });
         $(".flash-message-container")
             .children()
@@ -133,6 +134,7 @@ $().ready(function() {
                 var $alertDiv = $(this);
                 setTimeout(function() {
                     $alertDiv.alert("close");
+                    $(".flash-message-container").hide();
                 }, index * 4000 + 4000);
             });
     }
@@ -159,7 +161,7 @@ $().ready(function() {
                     $("#" + selectorName).click();
                     break;
                 case "class":
-                    $("." + selectorName).click();                    
+                    $("." + selectorName).click();
                     break;
                 default:
                     console.log(

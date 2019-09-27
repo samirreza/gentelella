@@ -28,13 +28,3 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
 </div>
 <hr/>
-<div class="row">
-    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-        <?= UpdateBox::widget([
-            'lastUpdate' => ChangeLog::find()->orderBy(['date' => SORT_DESC])->limit(1)->all(),
-            'linkUrl' => Url::to('changelog/manage/list'),
-            'showLink' => true,
-            'visible' => Yii::$app->user->can('superuser')
-        ]) ?>
-    </div>
-</div>

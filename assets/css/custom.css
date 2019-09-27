@@ -245,7 +245,7 @@ footer {
 .tile-stats .title{
     margin: 0 10px 0 0;
     padding: 0;
-    font-size: 30px;
+    font-size: 25px;
     font-weight: 500;
     line-height: 2.5;
 }
@@ -264,16 +264,16 @@ footer {
     padding-top: 65px !important;
 }
 
-h4.nad-page-title{   
+h4.nad-page-title{
     /* commented in favor of display: table */
-    /* 
+    /*
     width: -moz-max-content;
-    width: -webkit-max-content; 
+    width: -webkit-max-content;
     text-align: center;
     */
-    display: table;    
+    display: table;
     margin: 5px auto;
-    padding: 0 0 3px 0;    
+    padding: 0 0 3px 0;
     color: #3b5571;
 }
 
@@ -283,6 +283,21 @@ h4.nad-page-title .nad-page-title-focus{
 
 .input-group-addon:last-child {
     border-right-width: 1px;
-    border-right-style: solid;    
+    border-right-style: solid;
     border-left: 0;
+}
+
+div.main_container .btn-group .dropdown-toggle.btn.nad-disabled,
+div.main_container .btn-group .dropdown-menu li .btn[disabled],
+div.main_container .action-button.btn.disabled,
+div.main_container .action-button.btn[disabled],
+div.main_container fieldset[disabled] .action-button.btn
+{
+    background-color: #434343 !important;
+    border-color: #434343 !important;
+    color: #f7f7f7;
+}
+
+.top_nav .dropdown-menu li a{
+    padding: 0px;
 }

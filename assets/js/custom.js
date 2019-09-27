@@ -5,44 +5,64 @@ if ($(".flash-message-container").length > 0) {
             let $alertDiv = $(this);
             setTimeout(function() {
                 $alertDiv.alert("close");
+                $(".flash-message-container").hide();
             }, index * 4000 + 4000);
         });
 }
 
 $("document").ready(function() {
-    let actionBtnClass = ".action-button";    
-    let actionBtnContainer = $(actionBtnClass).parent().clone();    
+    // action buttons (except for form submit button)
+    let actionBtnClass = ".action-button";
+    let actionBtnContainer = $(actionBtnClass).parent().clone();
     let actionBtnTop = $(actionBtnClass).offset().top;
-    let actionBtnHeight = $(actionBtnClass).height();
+    let actionBtnContainerHeight = $(actionBtnClass).parent().height();
 
+    // horizontal nav menu
     let navMenuClass = ".nav_menu";
     let navMenuElement = $(navMenuClass);
     let navMenuHeight = navMenuElement.height();
 
-    let extraMargin = 5;    
+    // form submit button
+    let submitBtn = $("form button" + actionBtnClass + "[type=submit]");
+    if(submitBtn.length > 0){ // if submit button exists
+        let clonedSubmitBtn = submitBtn.clone(false); // false ignores all event handlers
+        let idOfClonedSubmitBtn = "clonedSubmitBtn";
+        clonedSubmitBtn.attr("id", idOfClonedSubmitBtn);
+        $(document).on("click", "#" + idOfClonedSubmitBtn, function(event){
+            event.preventDefault(); // just to make sure
+            submitBtn.click();
+        });
+        actionBtnContainer.find("button[type=submit]").replaceWith(clonedSubmitBtn);
+    }
 
-    $(window).scroll(function(){        
-        if($(this).scrollTop() <= actionBtnTop - 2 * actionBtnHeight){      
+    let extraMargin = -5;
+
+    $(window).scroll(function(){
+        if($(this).scrollTop() <= actionBtnTop - actionBtnContainerHeight){
             navMenuElement.css({"box-shadow": "none"});
             navMenuElement.css({"-moz-box-shadow": "none"});
-            navMenuElement.css({"-webkit-box-shadow": "none"});                        
+            navMenuElement.css({"-webkit-box-shadow": "none"});
             if( navMenuElement.find(actionBtnClass).length > 0){ // exists
-                navMenuElement.height(navMenuHeight - actionBtnHeight - extraMargin);
+                navMenuElement.height(navMenuHeight - actionBtnContainerHeight - extraMargin);
                 navMenuElement.find(actionBtnClass).parent().remove()
-            }            
-          }else if($(this).scrollTop() > (navMenuElement.offset().top - 2 * actionBtnHeight)){
-            if( navMenuElement.find(actionBtnClass).length == 0){ // not exists 
-                navMenuElement.height(navMenuHeight + actionBtnHeight + extraMargin);
-                navMenuElement.append(actionBtnContainer); 
-            }      
-            navMenuElement.css({                
+            }
+          }else if($(this).scrollTop() > (navMenuElement.offset().top - actionBtnContainerHeight)){
+            if( navMenuElement.find(actionBtnClass).length == 0){ // not exists
+                // close all opened drop-downs before scrolling
+                $(actionBtnClass).parent().find(".btn.btn-group").removeClass('open');
+                actionBtnContainer.find(".btn.btn-group").removeClass('open');
+
+                navMenuElement.height(navMenuHeight + actionBtnContainerHeight + extraMargin);
+                navMenuElement.append(actionBtnContainer);
+            }
+            navMenuElement.css({
                 "border-bottom": "1px solid #DDDDDD",
                 "box-shadow": "0 7px 7px -6px #888888",
                 "-moz-box-shadow": "0 7px 7px -6px #888888",
                 "-webkit-box-shadow": "0 7px 7px -6px #888888"
-            });            
+            });
           }
-    });    
+    });
 });
 
 $(".collapse-link").on("click", function() {

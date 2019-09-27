@@ -5,6 +5,7 @@ use yii\helpers\Html;
 use nad\common\SideMenu;
 use yii\widgets\Breadcrumbs;
 use theme\widgets\FlashMessage;
+use nad\common\helpers\Utility;
 use theme\assetbundles\IEAssetBundle;
 use theme\assetbundles\ThemeAssetBundle;
 use theme\widgets\HorizontalMenuContainer;
@@ -28,9 +29,15 @@ IEAssetBundle::register($this);
     <body class="nav-md">
     <?php $this->beginBody() ?>
         <div class="container body">
+        <?php if(Utility::IsNullOrEmpty(Yii::$app->session->getAllFlashes())): ?>
+            <div class="flash-message-container" style="display: none">
+                <?= FlashMessage::widget() ?>
+            </div>
+        <?php else: ?>
             <div class="flash-message-container">
                 <?= FlashMessage::widget() ?>
             </div>
+        <?php endif; ?>
             <div class="main_container">
                 <div class="col-md-3 left_col hidden-print">
                     <div class="left_col scroll-view">
