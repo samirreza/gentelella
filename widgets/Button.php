@@ -12,6 +12,7 @@ class Button extends Widget
     public $options = [];
     public $icon = 'heart';
     public $type = 'success';
+    public $useDefaultCssClass = true;
     /**
      * only takes effect when @see $visibleFor property is not set
      * @var boolean
@@ -33,7 +34,10 @@ class Button extends Widget
             );
         }
         $this->checkIfVisible();
-        Html::addCssClass($this->options, 'btn btn-xs action-button');
+        Html::addCssClass($this->options, 'btn btn-xs');
+        if($this->useDefaultCssClass){
+            Html::addCssClass($this->options, 'action-button');
+        }
         if (empty($this->type)) {
             Html::addCssClass($this->options, 'btn-default');
         } else {
