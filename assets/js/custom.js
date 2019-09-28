@@ -13,7 +13,7 @@ if ($(".flash-message-container").length > 0) {
 $("document").ready(function() {
     // action buttons (except for form submit button)
     let actionBtnClass = ".action-button";
-    let actionBtnContainer = $(actionBtnClass).parent().clone();
+    let ClonedActionBtnContainer = $(actionBtnClass).parent().clone();
     let actionBtnTop = $(actionBtnClass).offset().top;
     let actionBtnContainerHeight = $(actionBtnClass).parent().height();
 
@@ -21,6 +21,8 @@ $("document").ready(function() {
     let navMenuClass = ".nav_menu";
     let navMenuElement = $(navMenuClass);
     let navMenuHeight = navMenuElement.height();
+    let navMenuExtraHeight = 0;
+    let navMenuExtraMargin = -5;
 
     // form submit button
     let submitBtn = $("form button" + actionBtnClass + "[type=submit]");
@@ -32,10 +34,8 @@ $("document").ready(function() {
             event.preventDefault(); // just to make sure
             submitBtn.click();
         });
-        actionBtnContainer.find("button[type=submit]").replaceWith(clonedSubmitBtn);
+        ClonedActionBtnContainer.find("button[type=submit]").replaceWith(clonedSubmitBtn);
     }
-
-    let extraMargin = -5;
 
     $(window).scroll(function(){
         if($(this).scrollTop() <= actionBtnTop - actionBtnContainerHeight){
@@ -43,17 +43,18 @@ $("document").ready(function() {
             navMenuElement.css({"-moz-box-shadow": "none"});
             navMenuElement.css({"-webkit-box-shadow": "none"});
             if( navMenuElement.find(actionBtnClass).length > 0){ // exists
-                navMenuElement.height(navMenuHeight - actionBtnContainerHeight - extraMargin);
+                navMenuElement.height(navMenuHeight - navMenuExtraHeight - navMenuExtraMargin);
                 navMenuElement.find(actionBtnClass).parent().remove()
             }
           }else if($(this).scrollTop() > (navMenuElement.offset().top - actionBtnContainerHeight)){
             if( navMenuElement.find(actionBtnClass).length == 0){ // not exists
                 // close all opened drop-downs before scrolling
                 $(actionBtnClass).parent().find(".btn.btn-group").removeClass('open');
-                actionBtnContainer.find(".btn.btn-group").removeClass('open');
+                ClonedActionBtnContainer.find(".btn.btn-group").removeClass('open');
 
-                navMenuElement.height(navMenuHeight + actionBtnContainerHeight + extraMargin);
-                navMenuElement.append(actionBtnContainer);
+                navMenuElement.append(ClonedActionBtnContainer);
+                navMenuExtraHeight = navMenuElement.find(actionBtnClass).parent().height();
+                navMenuElement.height(navMenuHeight + navMenuExtraHeight + navMenuExtraMargin);
             }
             navMenuElement.css({
                 "border-bottom": "1px solid #DDDDDD",
