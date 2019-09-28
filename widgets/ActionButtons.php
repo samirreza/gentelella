@@ -45,7 +45,7 @@ class ActionButtons extends Widget
                             'label' => $label,
                             'options' => $options,
                             'icon' => $icon,
-                            'type' => 'success',
+                            'type' => 'info',
                             'visibleFor' => $visibleFor,
                             'visible' => $visible
                         ]);
