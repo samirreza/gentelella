@@ -301,3 +301,13 @@ div.main_container fieldset[disabled] .action-button.btn
 .top_nav .dropdown-menu li a{
     padding: 0px;
 }
+
+.grid-view .ajaxview .glyphicon.glyphicon-eye-open,
+.grid-view .fa.fa-tree {
+    color: #31ac1e;
+}
+
+.grid-view .ajaxdelete .glyphicon.glyphicon-trash,
+.grid-view .ajaxupdate .glyphicon.glyphicon-pencil {
+    color:#ec971f;
+}
