@@ -124,7 +124,6 @@ footer {
     position: inherit !important;
 }
 
-/* //////////////////// */
 .nav_menu {
     min-height: 56px;
     height: 100%;
@@ -144,6 +143,7 @@ footer {
     background-color: #ededed;
     margin-bottom: 0;
     padding: 10px 0 0 0 !important;
+    left: 40px;
 }
 
 .breadcrumb > li + li::before {
@@ -245,16 +245,22 @@ footer {
 .tile-stats .title{
     margin: 0 10px 0 0;
     padding: 0;
-    font-size: 25px;
+    font-size: 20px;
     font-weight: 500;
     line-height: 2.5;
+}
+
+.tile-stats .icon .fa {
+    font-size: 40px;
+    height: 13px;
+    padding-right: 10px;
 }
 /* //////////////////// */
 
 .nav_menu {
     position: fixed;
     top: 0;
-    width: 85%;
+    width: 80%;
     /* margin-bottom: 25px; */
     z-index: 9;
     height: 50px;
@@ -310,4 +316,12 @@ div.main_container fieldset[disabled] .action-button.btn
 .grid-view .ajaxdelete .glyphicon.glyphicon-trash,
 .grid-view .ajaxupdate .glyphicon.glyphicon-pencil {
     color:#ec971f;
+}
+
+.main_container .top_nav .nav_menu .nav.toggle {
+    padding-right: 15px;
+}
+
+.btn-group.open .dropdown-menu{
+    display: table;
 }
