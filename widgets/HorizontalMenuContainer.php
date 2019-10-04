@@ -8,11 +8,17 @@ use yii\bootstrap\NavBar;
 
 class HorizontalMenuContainer extends \yii\base\Widget
 {
+    public $params; // extra parameters from child views.
+
     public function run()
     {
-        $module = Yii::$app->controller->module;
-        $horizontalMenuItems = 
-            $module->horizontalMenuItems ?? [];
+        $horizontalMenuItems = [];
+        if(isset($this->params['horizontalMenuItems'])){
+            $horizontalMenuItems = $this->params['horizontalMenuItems'];
+        }else if(isset(Yii::$app->controller->module->horizontalMenuItems)){
+            $horizontalMenuItems = Yii::$app->controller->module->horizontalMenuItems;
+        }
+
         NavBar::begin([
             'options' => [
                 'id' => 'horizontal-navbar'

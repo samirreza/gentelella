@@ -68,9 +68,9 @@ IEAssetBundle::register($this);
                 <div class="top_nav hidden-print">
                     <div class="nav_menu">
                         <div class="row">
-                            <div class="col-md-1 nav toggle">
+                            <!-- <div class="col-md-1 nav toggle">
                                 <a id="menu_toggle"><i class="fa fa-bars"></i></a>
-                            </div>
+                            </div> -->
                             <div class="col-md-1 nav toggle">
                                 <a onclick="toggleFullscreen();"><i class="fa fa-arrows"></i></a>
                             </div>
@@ -79,7 +79,11 @@ IEAssetBundle::register($this);
                                     !isset($this->params['disableHorizontalMenu']) ||
                                     !$this->params['disableHorizontalMenu']
                                 ) : ?>
-                                    <?= HorizontalMenuContainer::widget() ?>
+                                    <?= HorizontalMenuContainer::widget(
+                                        [
+                                            'params' => $this->params // extra parameters from child views.
+                                        ]
+                                    ) ?>
                                 <?php endif; ?>
                             </div>
                             <div class="col-md-5">
