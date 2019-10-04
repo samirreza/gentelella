@@ -13,9 +13,10 @@ if ($(".flash-message-container").length > 0) {
 $("document").ready(function() {
     // action buttons (except for form submit button)
     let actionBtnClass = ".action-button";
-    let ClonedActionBtnContainer = $(actionBtnClass).parent().clone();
+    let actionBtnContainer = $(actionBtnClass).parent();
+    let clonedActionBtnContainer = actionBtnContainer.clone();
     let actionBtnTop = $(actionBtnClass).offset().top;
-    let actionBtnContainerHeight = $(actionBtnClass).parent().height();
+    let actionBtnContainerHeight = actionBtnContainer.height();
 
     // horizontal nav menu
     let navMenuClass = ".nav_menu";
@@ -34,11 +35,11 @@ $("document").ready(function() {
             event.preventDefault(); // just to make sure
             submitBtn.click();
         });
-        ClonedActionBtnContainer.find("button[type=submit]").replaceWith(clonedSubmitBtn);
+        clonedActionBtnContainer.find("button[type=submit]").replaceWith(clonedSubmitBtn);
     }
 
     $(window).scroll(function(){
-        if($(this).scrollTop() <= actionBtnTop - actionBtnContainerHeight){
+        if($(this).scrollTop() <= actionBtnTop - actionBtnContainerHeight / 2){
             navMenuElement.css({"box-shadow": "none"});
             navMenuElement.css({"-moz-box-shadow": "none"});
             navMenuElement.css({"-webkit-box-shadow": "none"});
@@ -46,13 +47,13 @@ $("document").ready(function() {
                 navMenuElement.height(navMenuHeight - navMenuExtraHeight - navMenuExtraMargin);
                 navMenuElement.find(actionBtnClass).parent().remove()
             }
-          }else if($(this).scrollTop() > (navMenuElement.offset().top - actionBtnContainerHeight)){
+          }else if($(this).scrollTop() > (navMenuElement.offset().top - actionBtnContainerHeight / 2)){
             if( navMenuElement.find(actionBtnClass).length == 0){ // not exists
                 // close all opened drop-downs before scrolling
-                $(actionBtnClass).parent().find(".btn.btn-group").removeClass('open');
-                ClonedActionBtnContainer.find(".btn.btn-group").removeClass('open');
+                actionBtnContainer.find(".btn.btn-group").removeClass('open');
+                clonedActionBtnContainer.find(".btn.btn-group").removeClass('open');
 
-                navMenuElement.append(ClonedActionBtnContainer);
+                navMenuElement.append(clonedActionBtnContainer);
                 navMenuExtraHeight = navMenuElement.find(actionBtnClass).parent().height();
                 navMenuElement.height(navMenuHeight + navMenuExtraHeight + navMenuExtraMargin);
             }

@@ -260,7 +260,7 @@ footer {
 .nav_menu {
     position: fixed;
     top: 0;
-    width: 80%;
+    width: 83%;
     /* margin-bottom: 25px; */
     z-index: 9;
     height: 50px;
@@ -270,7 +270,10 @@ footer {
     padding-top: 65px !important;
 }
 
-h4.nad-page-title{
+h1.nad-page-title,
+h2.nad-page-title,
+h3.nad-page-title,
+h4.nad-page-title {
     /* commented in favor of display: table */
     /*
     width: -moz-max-content;
@@ -324,4 +327,17 @@ div.main_container fieldset[disabled] .action-button.btn
 
 .btn-group.open .dropdown-menu{
     display: table;
+}
+
+.top_nav .nav_menu div[class^='col-sm-'],
+.top_nav .nav_menu div[class*='col-sm-'] {
+    width: 95%;
+}
+
+.dropdown-menu .divider{
+    margin: 2px 0;
+}
+
+.btn.btn-group{
+    padding: 0px;
 }
