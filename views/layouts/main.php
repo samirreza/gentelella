@@ -79,7 +79,11 @@ IEAssetBundle::register($this);
                                     !isset($this->params['disableHorizontalMenu']) ||
                                     !$this->params['disableHorizontalMenu']
                                 ) : ?>
-                                    <?= HorizontalMenuContainer::widget() ?>
+                                    <?= HorizontalMenuContainer::widget(
+                                        [
+                                            'params' => $this->params // extra parameters from child views.
+                                        ]
+                                    ) ?>
                                 <?php endif; ?>
                             </div>
                             <div class="col-md-5">
