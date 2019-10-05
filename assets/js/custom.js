@@ -6,7 +6,7 @@ if ($(".flash-message-container").length > 0) {
             setTimeout(function() {
                 $alertDiv.alert("close");
                 $(".flash-message-container").hide();
-            }, index * 4000 + 4000);
+            }, index * 1000 + 1000);
         });
 }
 
