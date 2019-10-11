@@ -341,3 +341,24 @@ div.main_container fieldset[disabled] .action-button.btn
 .btn.btn-group{
     padding: 0px;
 }
+
+hr {
+    margin-top: 0px;
+    margin-bottom: 10px;
+    border: 0;
+    height: 1px;
+    background: #333;
+    background-image: none;
+    background-image: linear-gradient(to right, #ccc, #333, #ccc);
+}
+
+.label {
+    font-weight: 500;
+}
+.panel .panel-body{
+    padding: 10px 15px 3px 15px;
+}
+
+.filemanager-widgets-file .input-group.single-file-upload input.form-control {
+    z-index: 1;
+}
