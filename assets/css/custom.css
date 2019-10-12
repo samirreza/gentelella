@@ -362,3 +362,9 @@ hr {
 .filemanager-widgets-file .input-group.single-file-upload input.form-control {
     z-index: 1;
 }
+
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+    background-color: #d0d0d0;
+}
