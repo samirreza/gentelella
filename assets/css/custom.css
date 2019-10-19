@@ -368,3 +368,8 @@ hr {
 .navbar-default .navbar-nav > .active > a:focus {
     background-color: #d0d0d0;
 }
+
+.form-group.required label:after {
+    content: " *";
+    color: red;
+}
