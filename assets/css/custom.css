@@ -313,7 +313,7 @@ footer {
 .nav_menu {
     position: fixed;
     top: 0;
-    width: 83%;
+    width: 95%;
     /* margin-bottom: 25px; */
     z-index: 9;
     height: 50px;
