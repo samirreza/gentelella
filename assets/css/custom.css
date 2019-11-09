@@ -426,3 +426,16 @@ hr {
     content: " *";
     color: red;
 }
+
+.filemanager-widgets-file .uploaded-files ul.list-unstyled li span.filename{
+    font-size: 0.9em;
+}
+
+.filemanager-widgets-file .uploaded-files ul.list-unstyled li{
+    font-weight: bold;
+    margin-bottom: 10px;
+    padding: 5px;
+    border: none outset #FFFFFF;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.4);
+    border-radius: 2px;
+}
