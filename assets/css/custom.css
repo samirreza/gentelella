@@ -426,3 +426,9 @@ hr {
     content: " *";
     color: red;
 }
+
+.grid-view .table tbody tr td,
+.grid-view .table thead tr th
+{
+    text-align: center;
+}
