@@ -432,3 +432,7 @@ hr {
 {
     text-align: center;
 }
+
+.table-striped > tbody > tr:nth-of-type(odd) {
+    background-color: #e1f7fe;
+}
