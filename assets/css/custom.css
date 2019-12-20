@@ -1,3 +1,55 @@
+@font-face {
+    font-family: "dana-regular";
+    font-style: normal;
+    font-weight: normal;
+    src: url("../fonts/eot/dana-regular.eot");
+    src: url("../fonts/eot/dana-regular.eot?#iefix")
+            format("embedded-opentype"),
+        url("../fonts/woff2/dana-regular.woff2") format("woff2"),
+        url("../fonts/woff/dana-regular.woff") format("woff");
+}
+@font-face {
+    font-family: "dana-bolditalic";
+    font-style: italic;
+    font-weight: bold;
+    src: url("../fonts/eot/dana-bolditalic.eot");
+    src: url("../fonts/eot/dana-bolditalic.eot?#iefix")
+            format("embedded-opentype"),
+        url("../fonts/woff2/dana-bolditalic.woff2")
+            format("woff2"),
+        url("../fonts/woff/dana-bolditalic.woff") format("woff");
+}
+@font-face {
+    font-family: "dana-regularitalic";
+    font-style: italic;
+    font-weight: normal;
+    src: url("../fonts/eot/dana-regularitalic.eot");
+    src: url("../fonts/eot/dana-regularitalic.eot?#iefix")
+            format("embedded-opentype"),
+        url("../fonts/woff2/dana-regularitalic.woff2")
+            format("woff2"),
+        url("../fonts/woff/dana-regularitalic.woff")
+            format("woff");
+}
+@font-face {
+    font-family: "BYekan";
+    src: url("../fonts/eot/BYekan.eot");
+    src: url("../fonts/eot/BYekan.eot?#") format("eot"),
+        url("../fonts/woff/BYekan.woff") format("woff"),
+        url("../fonts/woff2/BYekan.ttf") format("truetype");
+}
+@font-face {
+    font-family: "nassim-bold";
+    src: url("../fonts/eot/nassim-bold.eot");
+    src: url("../fonts/eot/nassim-bold.eot?#") format("eot"),
+        url("../fonts/woff/nassim-bold.woff") format("woff"),
+        url("../fonts/woff2/nassim-bold.ttf") format("truetype");
+}
+
+body {
+    font-family: "IRANSans_FaNum";
+}
+
 .file-input input {
     font-size: 0 !important;
 }
@@ -435,4 +487,12 @@ hr {
 
 .table-striped > tbody > tr:nth-of-type(odd) {
     background-color: #e1f7fe;
+}
+
+.grid-view .table thead td .input-group .input-group-addon.glyphicon {
+    top: 0px;
+}
+
+body {
+    color: #2b3541;
 }
