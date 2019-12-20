@@ -496,3 +496,11 @@ hr {
 body {
     color: #2b3541;
 }
+
+/*
+Fix for "uniqueCode" attribute cause it may contain fa/en characters.
+Only works on Firefox :(
+*/
+td:dir(ltr) {
+    font-family: Tahoma;
+}
