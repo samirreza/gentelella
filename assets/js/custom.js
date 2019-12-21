@@ -17,58 +17,59 @@ $("document").ready(function() {
     let navMenuElement = $(navMenuClass);
     let navMenuHeight = navMenuElement.height();
     let navMenuExtraHeight = 0;
-    let navMenuExtraMargin = -5;    
+    let navMenuExtraMargin = -5;
 
     // action buttons (except for form submit button)
     let actionBtnClass = ".action-button";
-    let actionBtnContainer = $(actionBtnClass).parent();
-    let clonedActionBtnContainer = actionBtnContainer.clone();
-    let actionBtnTop = $(actionBtnClass).offset().top;
-    let actionBtnContainerHeight = actionBtnContainer.height();
+    if($(actionBtnClass).length > 0){
+        let actionBtnContainer = $(actionBtnClass).parent();
+        let clonedActionBtnContainer = actionBtnContainer.clone();
+        let actionBtnTop = $(actionBtnClass).offset().top;
+        let actionBtnContainerHeight = actionBtnContainer.height();
 
-    // form submit button
-    let submitBtn = $("form button" + actionBtnClass + "[type=submit]");
-    if(submitBtn.length > 0){ // if submit button exists
-        let clonedSubmitBtn = submitBtn.clone(false); // false ignores all event handlers
-        let idOfClonedSubmitBtn = "clonedSubmitBtn";
-        clonedSubmitBtn.attr("id", idOfClonedSubmitBtn);
-        $(document).on("click", "#" + idOfClonedSubmitBtn, function(event){
-            event.preventDefault(); // just to make sure
-            submitBtn.click();
+        // form submit button
+        let submitBtn = $("form button" + actionBtnClass + "[type=submit]");
+        if(submitBtn.length > 0){ // if submit button exists
+            let clonedSubmitBtn = submitBtn.clone(false); // false ignores all event handlers
+            let idOfClonedSubmitBtn = "clonedSubmitBtn";
+            clonedSubmitBtn.attr("id", idOfClonedSubmitBtn);
+            $(document).on("click", "#" + idOfClonedSubmitBtn, function(event){
+                event.preventDefault(); // just to make sure
+                submitBtn.click();
+            });
+            clonedActionBtnContainer.find("button[type=submit]").replaceWith(clonedSubmitBtn);
+        }
+
+        $(window).scroll(function(){
+            if($(this).scrollTop() <= actionBtnTop - actionBtnContainerHeight / 2){
+                navMenuElement.css({"box-shadow": "none"});
+                navMenuElement.css({"-moz-box-shadow": "none"});
+                navMenuElement.css({"-webkit-box-shadow": "none"});
+                if( navMenuElement.find(actionBtnClass).length > 0){ // exists
+                    navMenuElement.height(navMenuHeight - navMenuExtraHeight - navMenuExtraMargin);
+                    navMenuElement.find(actionBtnClass).parent().remove()
+                }
+            }else if($(this).scrollTop() > (navMenuElement.offset().top - actionBtnContainerHeight / 2)){
+                if( navMenuElement.find(actionBtnClass).length == 0){ // not exists
+                    // close all opened drop-downs before scrolling
+                    actionBtnContainer.find(".btn.btn-group").removeClass('open');
+                    clonedActionBtnContainer.find(".btn.btn-group").removeClass('open');
+
+                    navMenuElement.append(clonedActionBtnContainer);
+                    navMenuExtraHeight = navMenuElement.find(actionBtnClass).parent().height();
+                    navMenuElement.height(navMenuHeight + navMenuExtraHeight + navMenuExtraMargin);
+                }
+                navMenuElement.css({
+                    "border-bottom": "1px solid #DDDDDD",
+                    "box-shadow": "0 7px 7px -6px #888888",
+                    "-moz-box-shadow": "0 7px 7px -6px #888888",
+                    "-webkit-box-shadow": "0 7px 7px -6px #888888"
+                });
+            }
         });
-        clonedActionBtnContainer.find("button[type=submit]").replaceWith(clonedSubmitBtn);
     }
 
-    $(window).scroll(function(){
-        if($(this).scrollTop() <= actionBtnTop - actionBtnContainerHeight / 2){
-            navMenuElement.css({"box-shadow": "none"});
-            navMenuElement.css({"-moz-box-shadow": "none"});
-            navMenuElement.css({"-webkit-box-shadow": "none"});
-            if( navMenuElement.find(actionBtnClass).length > 0){ // exists
-                navMenuElement.height(navMenuHeight - navMenuExtraHeight - navMenuExtraMargin);
-                navMenuElement.find(actionBtnClass).parent().remove()
-            }
-          }else if($(this).scrollTop() > (navMenuElement.offset().top - actionBtnContainerHeight / 2)){
-            if( navMenuElement.find(actionBtnClass).length == 0){ // not exists
-                // close all opened drop-downs before scrolling
-                actionBtnContainer.find(".btn.btn-group").removeClass('open');
-                clonedActionBtnContainer.find(".btn.btn-group").removeClass('open');
-
-                navMenuElement.append(clonedActionBtnContainer);
-                navMenuExtraHeight = navMenuElement.find(actionBtnClass).parent().height();
-                navMenuElement.height(navMenuHeight + navMenuExtraHeight + navMenuExtraMargin);
-            }
-            navMenuElement.css({
-                "border-bottom": "1px solid #DDDDDD",
-                "box-shadow": "0 7px 7px -6px #888888",
-                "-moz-box-shadow": "0 7px 7px -6px #888888",
-                "-webkit-box-shadow": "0 7px 7px -6px #888888"
-            });
-          }
-    });
-});
-
-//-------------------------------------------------------------------
+    //-------------------------------------------------------------------
 
     if($(".grid-view table").length > 0){
 	    let theadTop = $(".grid-view table thead").offset().top;
@@ -82,37 +83,39 @@ $("document").ready(function() {
 	      element.css({"background-color": "inherit"});
 	      element.removeClass("thead-fixed-top");
 	      element.css({"position":"static","top":theadTop});
-	    }
-	    else if($(this).scrollTop()>(element.offset().top) && element.css("position")=="static" && element.parent().find("tr").length>10){
+	    }else if($(this).scrollTop()>(element.offset().top) && element.css("position")=="static" && element.parent().find("tr").length>10){
 	      let thWidths=[];
 	      element.find("th").each(function(){
-		thWidths.push($(this).width());
-	      });
+		    thWidths.push($(this).width());
+          });
+
+          let navMenuHeight2 = navMenuElement.height();
 	      element.css({
-		"position":"fixed",
-		 "top":navMenuHeight,
-		  "width": theadWidth,
-		   "background-color": "#FFFFFF",
-		    "border-bottom": "1px solid #DDDDDD",
-		     "box-shadow": "0 7px 7px -6px #888888",
-		      "-moz-box-shadow": "0 7px 7px -6px #888888",
-		       "-webkit-box-shadow": "0 7px 7px -6px #888888",
-			"z-index": "100"
-		});
+            "position":"fixed",
+            "top":navMenuHeight2,
+            "width": theadWidth,
+            "background-color": "#FFFFFF",
+                "border-bottom": "1px solid #DDDDDD",
+                "box-shadow": "0 7px 7px -6px #888888",
+                "-moz-box-shadow": "0 7px 7px -6px #888888",
+                "-webkit-box-shadow": "0 7px 7px -6px #888888",
+                "z-index": "100"
+            });
 	      let i=0;
 	      element.find("th").each(function(){
-		  $(this).width(thWidths[i]);
-		++i;
+            $(this).width(thWidths[i]);
+            ++i;
 	      });
 	      element.addClass("thead-fixed-top");
 	      i=0;
 	      element.parent().find("tbody tr:first td").each(function(){
-		$(this).css({"min-width":thWidths[i]});
-		++i;
+            $(this).css({"min-width":thWidths[i]});
+            ++i;
 	      });
 	    }
 	  });
 	}
+});
 
 // ----------------------------------------------------------------
 
