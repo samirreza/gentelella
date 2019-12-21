@@ -17,53 +17,7 @@ $("document").ready(function() {
     let navMenuElement = $(navMenuClass);
     let navMenuHeight = navMenuElement.height();
     let navMenuExtraHeight = 0;
-    let navMenuExtraMargin = -5;
-
-    //-------------------------------------------------------------------
-
-    let theadTop = $(".grid-view table thead").offset().top;
-	let theadWidth=$(".grid-view table thead").width();
-	$(window).scroll(function(){
-    let element=$(".grid-view table thead");
-    if($(this).scrollTop() <= theadTop-43){
-      element.css({"box-shadow": "none"});
-      element.css({"-moz-box-shadow": "none"});
-      element.css({"-webkit-box-shadow": "none"});
-      element.css({"background-color": "inherit"});
-      element.removeClass("thead-fixed-top");
-      element.css({"position":"static","top":theadTop});
-    }
-    else if($(this).scrollTop()>(element.offset().top) && element.css("position")=="static" && element.parent().find("tr").length>10){
-      let thWidths=[];
-      element.find("th").each(function(){
-      	thWidths.push($(this).width());
-      });
-      element.css({
-      	"position":"fixed",
-      	 "top":navMenuHeight,
-      	  "width": theadWidth,
-      	   "background-color": "#FFFFFF",
-      	    "border-bottom": "1px solid #DDDDDD",
-      	     "box-shadow": "0 7px 7px -6px #888888",
-      	      "-moz-box-shadow": "0 7px 7px -6px #888888",
-               "-webkit-box-shadow": "0 7px 7px -6px #888888",
-                "z-index": "100"
-      	});
-      let i=0;
-      element.find("th").each(function(){
-          $(this).width(thWidths[i]);
-      	++i;
-      });
-      element.addClass("thead-fixed-top");
-      i=0;
-      element.parent().find("tbody tr:first td").each(function(){
-      	$(this).css({"min-width":thWidths[i]});
-      	++i;
-      });
-    }
-  });
-
-  //------------------------------------------------------------------------
+    let navMenuExtraMargin = -5;    
 
     // action buttons (except for form submit button)
     let actionBtnClass = ".action-button";
@@ -113,6 +67,54 @@ $("document").ready(function() {
           }
     });
 });
+
+//-------------------------------------------------------------------
+
+    if($(".grid-view table").length > 0){
+	    let theadTop = $(".grid-view table thead").offset().top;
+		let theadWidth=$(".grid-view table thead").width();
+		$(window).scroll(function(){
+	    let element=$(".grid-view table thead");
+	    if($(this).scrollTop() <= theadTop-43){
+	      element.css({"box-shadow": "none"});
+	      element.css({"-moz-box-shadow": "none"});
+	      element.css({"-webkit-box-shadow": "none"});
+	      element.css({"background-color": "inherit"});
+	      element.removeClass("thead-fixed-top");
+	      element.css({"position":"static","top":theadTop});
+	    }
+	    else if($(this).scrollTop()>(element.offset().top) && element.css("position")=="static" && element.parent().find("tr").length>10){
+	      let thWidths=[];
+	      element.find("th").each(function(){
+		thWidths.push($(this).width());
+	      });
+	      element.css({
+		"position":"fixed",
+		 "top":navMenuHeight,
+		  "width": theadWidth,
+		   "background-color": "#FFFFFF",
+		    "border-bottom": "1px solid #DDDDDD",
+		     "box-shadow": "0 7px 7px -6px #888888",
+		      "-moz-box-shadow": "0 7px 7px -6px #888888",
+		       "-webkit-box-shadow": "0 7px 7px -6px #888888",
+			"z-index": "100"
+		});
+	      let i=0;
+	      element.find("th").each(function(){
+		  $(this).width(thWidths[i]);
+		++i;
+	      });
+	      element.addClass("thead-fixed-top");
+	      i=0;
+	      element.parent().find("tbody tr:first td").each(function(){
+		$(this).css({"min-width":thWidths[i]});
+		++i;
+	      });
+	    }
+	  });
+	}
+
+// ----------------------------------------------------------------
 
 $(".collapse-link").on("click", function() {
     let panel = $(this).closest(".panel"),
