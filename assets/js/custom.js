@@ -21,10 +21,10 @@ $("document").ready(function() {
 
     //-------------------------------------------------------------------
 
-    let theadTop = $("#source-index-gridviewpjax table thead").offset().top;
-	let theadWidth=$("#source-index-gridviewpjax table thead").width();
+    let theadTop = $(".grid-view table thead").offset().top;
+	let theadWidth=$(".grid-view table thead").width();
 	$(window).scroll(function(){
-    let element=$("#source-index-gridviewpjax table thead");
+    let element=$(".grid-view table thead");
     if($(this).scrollTop() <= theadTop-43){
       element.css({"box-shadow": "none"});
       element.css({"-moz-box-shadow": "none"});
