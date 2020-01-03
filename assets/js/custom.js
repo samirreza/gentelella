@@ -10,6 +10,7 @@ if ($(".flash-message-container").length > 0) {
         });
 }
 
+// Sticky elements
 $("document").ready(function() {
 
     // horizontal nav menu
@@ -73,46 +74,51 @@ $("document").ready(function() {
 
     if($(".grid-view table").length > 0){
 	    let theadTop = $(".grid-view table thead").offset().top;
-		let theadWidth=$(".grid-view table thead").width();
+		let theadWidth = $(".grid-view table thead").width();
 		$(window).scroll(function(){
-	    let element=$(".grid-view table thead");
-	    if($(this).scrollTop() <= theadTop-43){
-	      element.css({"box-shadow": "none"});
-	      element.css({"-moz-box-shadow": "none"});
-	      element.css({"-webkit-box-shadow": "none"});
-	      element.css({"background-color": "inherit"});
-	      element.removeClass("thead-fixed-top");
-	      element.css({"position":"static","top":theadTop});
-	    }else if($(this).scrollTop()>(element.offset().top) && element.css("position")=="static" && element.parent().find("tr").length>10){
-	      let thWidths=[];
-	      element.find("th").each(function(){
-		    thWidths.push($(this).width());
-          });
+            let element=$(".grid-view table thead");
 
-          let navMenuHeight2 = navMenuElement.height();
-	      element.css({
-            "position":"fixed",
-            "top":navMenuHeight2,
-            "width": theadWidth,
-            "background-color": "#FFFFFF",
-                "border-bottom": "1px solid #DDDDDD",
-                "box-shadow": "0 7px 7px -6px #888888",
-                "-moz-box-shadow": "0 7px 7px -6px #888888",
-                "-webkit-box-shadow": "0 7px 7px -6px #888888",
-                "z-index": "100"
-            });
-	      let i=0;
-	      element.find("th").each(function(){
-            $(this).width(thWidths[i]);
-            ++i;
-	      });
-	      element.addClass("thead-fixed-top");
-	      i=0;
-	      element.parent().find("tbody tr:first td").each(function(){
-            $(this).css({"min-width":thWidths[i]});
-            ++i;
-	      });
-	    }
+            if($(this).scrollTop() <= theadTop-43){
+                element.css({"box-shadow": "none"});
+                element.css({"-moz-box-shadow": "none"});
+                element.css({"-webkit-box-shadow": "none"});
+                element.css({"background-color": "inherit"});
+                element.removeClass("thead-fixed-top");
+                element.css({"position":"static","top":theadTop});
+            } else if($(this).scrollTop() > (element.offset().top) && element.css("position") == "static" && element.parent().find("tr").length > 10){
+                let thWidths = [];
+                element.find("th").each(function(){
+                    thWidths.push($(this).width());
+                });
+
+                let navMenuHeight2 = navMenuElement.height();
+                element.css({
+                    "position": "fixed",
+                    "top": navMenuHeight2,
+                    "width": theadWidth,
+                    "background-color": "#FFFFFF",
+                    "border-bottom": "1px solid #DDDDDD",
+                    "box-shadow": "0 7px 7px -6px #888888",
+                    "-moz-box-shadow": "0 7px 7px -6px #888888",
+                    "-webkit-box-shadow": "0 7px 7px -6px #888888",
+                    "z-index": "3"
+                });
+                let i = 0;
+                element.find("th").each(function(){
+                    $(this).width(thWidths[i]);
+                    ++i;
+                });
+                element.addClass("thead-fixed-top");
+                i = 0;
+                element.parent().find("tbody tr:first td").each(function(){
+                    $(this).css({
+                        "min-width":thWidths[i] ,
+                        "max-width":thWidths[i] ,
+                        "width":thWidths[i]
+                    });
+                    ++i;
+                });
+            }
 	  });
 	}
 });
