@@ -101,7 +101,7 @@ $("document").ready(function() {
                     "box-shadow": "0 7px 7px -6px #888888",
                     "-moz-box-shadow": "0 7px 7px -6px #888888",
                     "-webkit-box-shadow": "0 7px 7px -6px #888888",
-                    "z-index": "100"
+                    "z-index": "3"
                 });
                 let i = 0;
                 element.find("th").each(function(){
@@ -111,7 +111,11 @@ $("document").ready(function() {
                 element.addClass("thead-fixed-top");
                 i = 0;
                 element.parent().find("tbody tr:first td").each(function(){
-                    $(this).css({"min-width":thWidths[i]});
+                    $(this).css({
+                        "min-width":thWidths[i] ,
+                        "max-width":thWidths[i] ,
+                        "width":thWidths[i]
+                    });
                     ++i;
                 });
             }
