@@ -74,7 +74,7 @@ IEAssetBundle::register($this);
                             <div class="col-md-1 nav toggle">
                                 <a onclick="toggleFullscreen();"><i class="fa fa-arrows"></i></a>
                             </div>
-                            <div class="col-md-5">
+                            <div class="col-md-8">
                                 <?php if (
                                     !isset($this->params['disableHorizontalMenu']) ||
                                     !$this->params['disableHorizontalMenu']
@@ -86,28 +86,40 @@ IEAssetBundle::register($this);
                                     ) ?>
                                 <?php endif; ?>
                             </div>
-                            <div class="col-md-5">
-                                <div class="">
-                                    <?= Breadcrumbs::widget([
-                                        'tag' => 'ol',
-                                        'homeLink' => [
-                                            'label' => 'خانه',
-                                            'url' => \yii::$app->homeUrl,
-                                            'template' => '<li><i class="fa fa-dashboard"></i> {link}</li>'
-                                        ],
-                                        'links' => isset($this->params['breadcrumbs']) ? array_map(function($link){
-                                                    if(!isset($link['label']))
-                                                        return ((mb_strlen($link) > 30 )?mb_substr($link, 0, 30) . '...':$link);
+                            <div class="col-md-1 pull-right">
+                                <a
+                                id = "breadcrumb-popover-btn"
+                                class = "btn btn-xs btn-primary"
+                                tabindex="0"
+                                role="button"
+                                data-toggle = "popover"
+                                data-trigger = "focus"
+                                title = "Dismissible popover"
+                                data-content = '<?=
+                                Breadcrumbs::widget([
+                                    'tag' => 'ol',
+                                    // 'options' => ['class' => ''],
+                                    'homeLink' => [
+                                        'label' => 'خانه',
+                                        'url' => \yii::$app->homeUrl,
+                                        'template' => '<li><i class="fa fa-home"></i> {link}</li>'
+                                    ],
+                                    'links' => isset($this->params['breadcrumbs']) ? array_map(function($link){
+                                                if(!isset($link['label']))
+                                                    return ((mb_strlen($link) > 30 )?mb_substr($link, 0, 30) . '...':$link);
 
-                                                    $newlabel = (mb_strlen($link['label']) > 30 )?mb_substr($link['label'], 0, 30) . '...':$link['label'];
-                                                    $newUrl = [
-                                                        'label' => $newlabel,
-                                                        'url' => $link['url']
-                                                    ];
-                                                    return $newUrl;
-                                                }, $this->params['breadcrumbs']) : [],
-                                    ]) ?>
-                                </div>
+                                                $newlabel = (mb_strlen($link['label']) > 30 )?mb_substr($link['label'], 0, 30) . '...':$link['label'];
+                                                $newUrl = [
+                                                    'label' => $newlabel,
+                                                    'url' => $link['url']
+                                                ];
+                                                return $newUrl;
+                                            }, $this->params['breadcrumbs']) : [],
+                                ])
+                                ?>'>
+                                <i class="fa fa-map-marker"></i>
+                                آدرس
+                                </a>
                             </div>
                         </div>
                         <div class="row">

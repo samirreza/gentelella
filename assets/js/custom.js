@@ -13,6 +13,17 @@ if ($(".flash-message-container").length > 0) {
 // Sticky elements
 $("document").ready(function() {
 
+    $('#breadcrumb-popover-btn').popover({
+        container: 'body',
+        html: true,
+        placement: 'right',
+        trigger: 'hover',
+        sanitize: false,
+        template: '<div class="popover row" role="tooltip"><div class="arrow"></div><div class="popover-content col-md-12"></div></div>'
+    });
+
+    //-----------------------------------------------------------------
+
     // horizontal nav menu
     let navMenuClass = ".nav_menu";
     let navMenuElement = $(navMenuClass);

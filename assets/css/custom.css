@@ -110,13 +110,37 @@ body {
 }
 
 .breadcrumb {
-    position: relative;
+    /* position: relative;
     top: 0;
-    left: 0;
-    right: auto;
-    float: none;
-    background: #f7f7f7;
-    padding-right: 10px;
+    left: 0; */
+    /* right: auto; */
+    /* float: none; */
+    background: #FFF;
+    /* padding-right: 10px; */
+}
+
+#breadcrumb-popover-btn {
+    margin-right: 50px;
+    margin-top: 10px;
+    border-radius: 20px;
+}
+
+.popover {
+    font-family: "IRANSans_FaNum";
+    color: #ffffff;
+    background: #337ab7;
+}
+
+.popover.right .arrow:after {
+    border-right-color: #337ab7;;
+}
+
+.popover .popover-content .breadcrumb,
+.popover .popover-content .breadcrumb li,
+.popover .popover-content .breadcrumb a {
+    /* background: #ffffff; */
+    color: #ffffff;
+    background: #337ab7;
 }
 
 .empty-row {
@@ -495,4 +519,9 @@ hr {
 
 body {
     color: #2b3541;
+}
+
+.popover{
+    max-width:2000px;
+    max-height:250px;
 }
