@@ -89,7 +89,7 @@ IEAssetBundle::register($this);
                             <div class="col-md-1 pull-right">
                                 <a
                                 id = "breadcrumb-popover-btn"
-                                class = "btn btn-xs btn-primary"
+                                class = "btn btn-xs btn-default"
                                 tabindex="0"
                                 role="button"
                                 data-toggle = "popover"

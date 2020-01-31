@@ -120,6 +120,8 @@ body {
 }
 
 #breadcrumb-popover-btn {
+    background: #434343;
+    color: #ffffff;
     margin-right: 50px;
     margin-top: 10px;
     border-radius: 20px;
@@ -128,11 +130,11 @@ body {
 .popover {
     font-family: "IRANSans_FaNum";
     color: #ffffff;
-    background: #337ab7;
+    background: #434343;
 }
 
 .popover.right .arrow:after {
-    border-right-color: #337ab7;;
+    border-right-color: #434343;;
 }
 
 .popover .popover-content .breadcrumb,
@@ -140,7 +142,8 @@ body {
 .popover .popover-content .breadcrumb a {
     /* background: #ffffff; */
     color: #ffffff;
-    background: #337ab7;
+    background: #434343;
+    margin-top: -10px;
 }
 
 .empty-row {
