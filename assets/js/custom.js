@@ -17,7 +17,7 @@ $("document").ready(function() {
         container: 'body',
         html: true,
         placement: 'right',
-        trigger: 'hover',
+        // trigger: 'hover',
         sanitize: false,
         template: '<div class="popover row" role="tooltip"><div class="arrow"></div><div class="popover-content col-md-12"></div></div>'
     });

@@ -146,6 +146,10 @@ body {
     margin-top: -10px;
 }
 
+.popover .popover-content .breadcrumb a {
+    text-decoration: underline;
+}
+
 .empty-row {
     height: 40px;
 }
