@@ -15,6 +15,7 @@ class Panel extends Widget
     public $tools;
     public $showCloseButton = false;
     public $showCollapseButton = false;
+    public $collapsed = false;
 
     public function init()
     {
@@ -35,8 +36,12 @@ class Panel extends Widget
             );
         }
         if ($this->showCollapseButton) {
+            $collapsedHtmlClass = 'fa-angle-up';
+            if($this->collapsed){
+                $collapsedHtmlClass = 'fa-angle-down';
+            }
             $this->tools = $this->tools . Html::a(
-                '<i class="fa fa-angle-up"></i>',
+                '<i class="fa ' . $collapsedHtmlClass . '"></i>',
                 null,
                 [
                     'class' => 'collapse-link'
@@ -82,7 +87,10 @@ class Panel extends Widget
 
     public function renderContent()
     {
-        echo Html::beginTag('div', ['class' => 'panel-body']);
+        $htmlOptions = ['class' => 'panel-body'];
+        if($this->collapsed)
+            $htmlOptions['style'] = 'display:none';
+        echo Html::beginTag('div', $htmlOptions);
         if (!empty($this->content)) {
             echo $this->content;
         }
