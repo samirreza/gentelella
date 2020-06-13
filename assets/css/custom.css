@@ -532,3 +532,8 @@ body {
     max-width:2000px;
     max-height:250px;
 }
+
+.panel-primary.panel .panel-heading .collapse-link .fa.fa-angle-down,
+.panel-primary.panel .panel-heading .collapse-link .fa.fa-angle-up {
+    color: #fff;
+}
