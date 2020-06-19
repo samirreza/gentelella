@@ -193,6 +193,8 @@ function toggleFullscreen() {
 }
 
 
+// -------- helpers ----------------
+
 function getUrlVars()
 {
     let vars = [], hash;
@@ -204,4 +206,32 @@ function getUrlVars()
         vars[hash[0]] = hash[1];
     }
     return vars;
+}
+
+function showNotification(message, type){
+    new Noty({
+        text: message,
+        type: type,
+        theme: 'nest',
+        progressBar: true,
+        layout: 'topCenter',
+        timeout: '5000',
+        closeWith: ['click'],
+        killer: true,
+    }).show();
+
+    // $.notify({
+    //     message: message
+    // },{
+    //     showProgressbar: true,
+    //     placement: {
+    //         from: 'top',
+    //         align: 'center'
+    //     },
+    //     animate: {
+    //         enter: 'animated fadeInDown',
+    //         exit: 'animated fadeOutUp'
+    //     },
+    //     type: type
+    // });
 }

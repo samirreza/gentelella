@@ -6,7 +6,7 @@ use modules\changelog\models\ChangeLog;
 use modules\nad\supplier\models\Supplier;
 use modules\changelog\widgets\updateBox\UpdateBox;
 
-$this->title = 'داشبورد';
+$this->title = 'ساماناد';
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>
