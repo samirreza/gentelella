@@ -208,7 +208,7 @@ function getUrlVars()
     return vars;
 }
 
-function showNotification(message, type){
+function notify(message, type){
     new Noty({
         text: message,
         type: type,

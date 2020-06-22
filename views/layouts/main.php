@@ -53,7 +53,10 @@ IEAssetBundle::register($this);
                                 <?= Html::a(
                                     '(خروج)',
                                     ['/user/auth/logout'],
-                                    ['class' => 'site_title logout-button']
+                                    [
+                                        'class' => 'site_title logout-button',
+                                        'title' => \Yii::$app->user->identity->fullname . ' (' . \Yii::$app->user->id . ' - ' . Yii::$app->user->identity->email . ')'
+                                    ]
                                 ) ?>
                             </div>
                         </div>

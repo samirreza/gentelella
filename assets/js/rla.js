@@ -29,6 +29,7 @@ $("document").ready(function() {
 
         $.post(url, data).done(function(response){
             $('#' + modalId).modal('hide');
+            notify('تغییرات مورد نظر با موفقیت در سیستم ثبت شد.', 'success');
         });
     });
 
