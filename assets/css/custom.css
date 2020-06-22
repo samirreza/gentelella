@@ -510,10 +510,13 @@ hr {
     color: red;
 }
 
-.grid-view .table tbody tr td,
 .grid-view .table thead tr th
 {
     text-align: center;
+}
+
+.grid-view .table tbody tr td {
+    text-align: right;
 }
 
 .table-striped > tbody > tr:nth-of-type(odd) {
@@ -536,4 +539,12 @@ body {
 .panel-primary.panel .panel-heading .collapse-link .fa.fa-angle-down,
 .panel-primary.panel .panel-heading .collapse-link .fa.fa-angle-up {
     color: #fff;
+}
+
+.noty_theme__nest.noty_bar .noty_body{
+    text-align: center;
+}
+
+.alert {
+    padding: 5px;
 }
