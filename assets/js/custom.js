@@ -208,14 +208,14 @@ function getUrlVars()
     return vars;
 }
 
-function notify(message, type){
+function notify(message, type, delay = '3000'){
     new Noty({
         text: message,
         type: type,
         theme: 'nest',
         progressBar: true,
         layout: 'topCenter',
-        timeout: '5000',
+        timeout: delay,
         closeWith: ['click'],
         killer: true,
     }).show();
