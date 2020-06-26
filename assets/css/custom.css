@@ -548,3 +548,11 @@ body {
 .alert {
     padding: 5px;
 }
+
+ul li.select2-search.select2-search--inline {
+    float: right !important;
+}
+
+.select2-selection.select2-selection--multiple ul li.select2-search.select2-search--inline input.select2-search__field {
+    min-width: 170px;
+}

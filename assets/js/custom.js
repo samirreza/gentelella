@@ -208,30 +208,23 @@ function getUrlVars()
     return vars;
 }
 
-function notify(message, type, delay = '3000'){
-    new Noty({
-        text: message,
-        type: type,
-        theme: 'nest',
-        progressBar: true,
-        layout: 'topCenter',
-        timeout: delay,
-        closeWith: ['click'],
-        killer: true,
-    }).show();
+function notify(message, type, showOverlay = false , delay = '3000'){
+    let options = {};
+    options.text = message;
+    options.type = type;
+    options.theme = 'nest';
+    options.progressBar = true;
+    options.layout = 'topCenter';
+    options.killer = true;
 
-    // $.notify({
-    //     message: message
-    // },{
-    //     showProgressbar: true,
-    //     placement: {
-    //         from: 'top',
-    //         align: 'center'
-    //     },
-    //     animate: {
-    //         enter: 'animated fadeInDown',
-    //         exit: 'animated fadeOutUp'
-    //     },
-    //     type: type
-    // });
+    if(showOverlay){
+        options.modal = true;
+        options.closeWith = [];
+        options.timeout = false;
+    }else{
+        options.closeWith = ['click'];
+        options.timeout = delay;
+    }
+
+    return new Noty(options).show();
 }
