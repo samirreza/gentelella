@@ -344,11 +344,11 @@ footer {
 .go-top {
     position: fixed;
     bottom: 2em;
-    right: 96%;
+    left: 96%;
     text-decoration: none;
     color: white;
     background-color: #f6f6f6;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgb(13, 205, 205);
     font-size: 12px;
     padding: 22px;
     border-radius: 3px;
