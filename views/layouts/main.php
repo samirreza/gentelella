@@ -140,7 +140,7 @@ IEAssetBundle::register($this);
                 </div>
             </div>
         </div>
-        <!-- <a href="#" class="go-top"><i></i></a> -->
+        <a href="#" class="go-top" title="برو به بالای صفحه"><i></i></a>
     <?php $this->endBody() ?>
     </body>
 </html>
