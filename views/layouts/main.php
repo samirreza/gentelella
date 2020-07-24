@@ -75,7 +75,7 @@ IEAssetBundle::register($this);
                                 <a id="menu_toggle"><i class="fa fa-bars"></i></a>
                             </div> -->
                             <div class="col-md-1 nav toggle">
-                                <a onclick="toggleFullscreen();"><i class="fa fa-arrows"></i></a>
+                                <a title="تمام صفحه" onclick="toggleFullscreen();"><i class="fa fa-arrows"></i></a>
                             </div>
                             <div class="col-md-8">
                                 <?php if (
